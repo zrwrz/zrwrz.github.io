@@ -4,13 +4,40 @@
   
   
   <entry>
-    <title>RL notes</title>
-    <link href="/2025/08/05/RL-notes/"/>
-    <url>/2025/08/05/RL-notes/</url>
+    <title>RL1：强化学习基本概念，马尔科夫决策过程，DP</title>
+    <link href="/RL1%EF%BC%9A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B%EF%BC%8CDP/"/>
+    <url>/RL1%EF%BC%9A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B%EF%BC%8CDP/</url>
     
     <content type="html"><![CDATA[]]></content>
     
     
+    
+    <tags>
+      
+      <tag>强化学习，笔记，动态规划</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>RL notes</title>
+    <link href="/2025/08/05/RL-notes/"/>
+    <url>/2025/08/05/RL-notes/</url>
+    
+    <content type="html"><![CDATA[<h1 id="About-RL"><a href="#About-RL" class="headerlink" title="About RL"></a>About RL</h1><p>暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。  </p><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p>1.王树森 深度强化学习<br>2. 多智能体强化学习短学期ppt</p><div class="note note-success">            <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p><a href="/RL1%EF%BC%9A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B%EF%BC%8CDP/">RL1：强化学习基本概念，马尔科夫决策过程，DP</a></p>          </div>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>强化学习</tag>
+      
+      <tag>笔记</tag>
+      
+    </tags>
     
   </entry>
   
