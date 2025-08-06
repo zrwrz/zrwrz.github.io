@@ -29,8 +29,11 @@
 <meta property="og:image" content="http://example.com/RL1pictures/image.png">
 <meta property="og:image" content="http://example.com/RL1pictures/image-2.png">
 <meta property="og:image" content="http://example.com/RL1pictures/image-3.png">
+<meta property="og:image" content="http://example.com/RL1pictures/image-4.png">
+<meta property="og:image" content="http://example.com/RL1pictures/image-5.png">
+<meta property="og:image" content="http://example.com/RL1pictures/image-6.png">
 <meta property="article:published_time" content="2025-08-05T12:09:26.000Z">
-<meta property="article:modified_time" content="2025-08-06T07:47:19.471Z">
+<meta property="article:modified_time" content="2025-08-06T13:14:59.098Z">
 <meta property="article:author" content="zrw">
 <meta property="article:tag" content="强化学习">
 <meta property="article:tag" content="笔记">
@@ -230,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.4k 字
+          1.8k 字
         
       </span>
     
@@ -241,7 +244,7 @@
         
         
         
-          12 分钟
+          16 分钟
         
       </span>
     
@@ -305,7 +308,9 @@
             <p>要注意状态转移具有<strong>随机性</strong>，由于环境的不确定性和干扰，当前agent即使在给定时刻采取确切的行为，也无法确定下面的状态。下面是一个通俗的例子<img src="/RL1pictures/image.png" srcset="/img/loading.gif" lazyload /></p>
           </div>
 <ul>
-<li>奖励函数<strong>R</strong>: 人为设置的奖励对于训练模型很重要，通常来说需要设置一系列的<strong>r(s,a,s’)</strong> <em>(从状态s采取行为a转移到状态s’的奖励)</em> 给智能体，以达到最终的训练目的；有时奖励会退化为r(s,a)</li>
+<li>奖励函数<strong>R</strong>: 人为设置的奖励对于训练模型很重要，通常来说需要设置一系列的<strong>r(s,a,s’)</strong> <em>(从状态s采取行为a转移到状态s’的奖励)</em> 给智能体，以达到最终的训练目的；有时奖励会退化为r(s,a) <div class="note note-primary">
+            <h4 id="r_t与rsa的区别"><span class="math inline"><em>R</em><sub><em>t</em></sub></span>与<span class="math inline"><em>r</em>(<em>s</em>, <em>a</em>)</span>的区别：</h4><p>依旧让gpt来说： &gt; ( r(s, a) ): &gt;表示 <strong>某个状态下，执行某个动作后得到的即时奖励</strong>。 它更像是一个 <strong>奖励函数</strong>，给定状态 ( s ) 和动作 ( a )，返回一个奖励值。 它是环境对动作的即时反馈，通常与时间步无关。</p><blockquote><p>( r_t ): 表示在 <strong>特定时间步 ( t )</strong> 下，智能体执行某个动作后得到的即时奖励。 它是 <strong>即时奖励的时刻标记</strong>，指在时刻 ( t ) 上的反馈。 这个奖励可能与某个特定的状态或动作有关，通常用于标识当前时间步的奖励。 所以说，主要就是衡量的参数不同（状态、行为 or 时间）</p></blockquote>
+          </div></li>
 <li>折扣因子<strong>𝛾</strong>: 一个介于0和1之间的参数，由于（人之常情）需要多关注眼前立刻获得的回报，因此对于未来若干步之后才能取得的好处就要设置折扣因子来减小权重</li>
 </ul>
 <h3 id="回报价值函数策略">2.2 回报，价值函数，策略</h3>
@@ -321,7 +326,13 @@
 <li><strong>策略(policy), <span class="math inline"><em>π</em></span></strong> 策略是智能体通过判断环境和状态，来决定下一步动作的函数。通常来说，策略分为<strong>确定性策略</strong>（一个状态对应唯一的动作：比如说，走迷宫设定策略为一直往前冲，除非看到墙就直接右拐）和<strong>随机性策略</strong>。在机器学习中，我们主要讨论随机性策略。 在随机性策略中,核心内容为概率密度函数 <strong><span class="math inline"><em>π</em>(<em>a</em>|<em>s</em>)</span></strong> ，其得到的结果为一个概率分布，为在当前策略&amp;状态s下，采取动作a的概率，即 <span class="math inline"><em>P</em>(<em>a</em><sub><em>t</em></sub> = <em>t</em>|<em>s</em><sub><em>t</em></sub> = <em>s</em>)</span>。</li>
 </ol>
 <div class="note note-primary">
-            <p>采样(sample)和轨迹(trajectory)是另外两个比较重要的概念。gpt这样告诉我： &gt;在 强化学习 中，采样（sample）指的是从环境中收集单一数据点或一小段数据。通常来说，采样是从当前状态中通过采取一个动作获得的反馈信息。这些数据（状态、动作、奖励、下一个状态）通常是通过与环境交互而获得的一个时间步的数据点。每次从环境中收集到的一组（状态、动作、奖励、下一个状态）就是一个 采样。 轨迹（trajectory）通常指的是智能体从某一初始状态出发，通过多次采样所得到的一系列数据点。它是智能体在一段时间内与环境交互的整个过程。</p>
+            <p><strong>采样(sample)</strong> 和 <strong>轨迹(trajectory)</strong> 是另外两个比较重要的概念。gpt这样告诉我： &gt;在 强化学习 中，采样（sample）指的是从环境中收集单一数据点或一小段数据。通常来说，采样是从当前状态中通过采取一个动作获得的反馈信息。这些数据（状态、动作、奖励、下一个状态）通常是通过与环境交互而获得的一个时间步的数据点。每次从环境中收集到的一组（状态、动作、奖励、下一个状态）就是一个 采样。 轨迹（trajectory）通常指的是智能体从某一初始状态出发，通过多次采样所得到的一系列数据点。它是智能体在一段时间内与环境交互的整个过程。</p>
+          </div>
+<ol start="4" type="1">
+<li><strong>MDP的价值和回报</strong>：结合上面给出的策略概念，在使用策略<span class="math inline"><em>π</em></span>的前提下，我们很容易得到在相应策略下一个<strong>状态价值函数</strong> <span class="math inline"><em>V</em><sup><em>π</em></sup>(<em>s</em>)</span>的表达式 <img src="/RL1pictures/image-4.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 进一步地，定义<strong>价值-行为函数</strong> <span class="math inline"><em>Q</em><sup><em>π</em></sup>(<em>s</em>, <em>a</em>)</span>，指的是agent在采用策略<span class="math inline"><em>π</em></span>的大方向下，在当前状态s已经采取特定行为a之后，期望得到的总回报。</li>
+</ol>
+<div class="note note-primary">
+            <h3 id="v与q的关系">V与Q的关系</h3><p>根据上述的定义，可以比较容易得到V与Q之间的计算关系<img src="/RL1pictures/image-5.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 通俗地说，在给定的策略下，<strong>V为给定状态s的期望价值，Q为给定状态s和行为a的期望价值</strong>；因此V即为<span class="math inline"><em>π</em></span>的概率分布下各个行为期望价值的加权和。 从另一个角度看：<img src="/RL1pictures/image-6.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 就是拆一步当前行为、状态的即时奖励，再加上当前(s,a)转移到各个新状态的V回报的加权和。（当然还有<span class="math inline"><em>γ</em></span>）</p>
           </div>
 
                 
