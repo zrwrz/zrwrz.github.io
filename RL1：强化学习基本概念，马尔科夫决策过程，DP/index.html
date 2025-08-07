@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://example.com/RL1pictures/image-9.png">
 <meta property="og:image" content="http://example.com/RL1pictures/image-10.png">
 <meta property="article:published_time" content="2025-08-05T12:09:26.000Z">
-<meta property="article:modified_time" content="2025-08-07T08:35:29.168Z">
+<meta property="article:modified_time" content="2025-08-07T10:26:50.866Z">
 <meta property="article:author" content="zrw">
 <meta property="article:tag" content="强化学习">
 <meta property="article:tag" content="笔记">
@@ -354,7 +354,7 @@
 <h4 id="策略迭代policy-iteration">3.2.1 策略迭代(policy iteration)</h4>
 <p>对于策略迭代，一般分为如下的两个步骤交替进行<img src="/RL1pictures/image-9.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
 <p>第一步的 <strong>策略评估</strong> 中，采取当前的策略，一般会为所有的状态定义一个（随机的）初始V值，之后不断使用Bellman期望方程进行迭代，直到收敛为止，以得到各个状态真实的奖励V值。 <div class="note note-danger">
-            <p>初始的策略应该可以完全随机设置；初始的V值感觉也可以随机设置，是否有影响存疑（我觉得无所谓）；同时，强大的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B7%B4%E6%8B%BF%E8%B5%AB%E4%B8%8D%E5%8A%A8%E7%82%B9%E5%AE%9A%E7%90%86/9492042">Banach不动点定理</a>保证一定可以得到最终的收敛解决；如下的简单推导确保优化结果一定越来越好<img src="/RL1pictures/image-10.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+            <p>初始的策略应该可以完全随机设置；初始的V值感觉也可以随机设置，是否有影响存疑（我觉得无所谓）；同时，强大的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B7%B4%E6%8B%BF%E8%B5%AB%E4%B8%8D%E5%8A%A8%E7%82%B9%E5%AE%9A%E7%90%86/9492042"><strong><u>Banach不动点定理</u></strong></a>保证一定可以得到最终的收敛解决；如下的简单推导确保优化结果一定越来越好<img src="/RL1pictures/image-10.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
           </div> 得到所有的V值之后，可以相应对于每一个状态s得到所有动作a的Q值，之后，进入<strong>策略优化</strong> 阶段，我们选取 <strong><span class="math inline">$\pi(s)=\arg\max\limits_a Q(s, a)$</span></strong> ,即直接用得到Q最大的动作a来作为新的策略 之后不断重复这两步，计算新的V Q，更新策略…… 直到策略收敛不再改变为止。</p>
 <h4 id="价值迭代value-iteration">3.2.2 价值迭代（value iteration）</h4>
 <p>核心表达式为 <strong><span class="math inline">$V(s) \leftarrow \max\limits_a \left[ r(s, a) + \gamma \sum_{s'} P(s' | s, a) V(s') \right]$</span></strong> ，通俗说，策略迭代需要计算所有行为得到的奖励再加权相加作为当前状态的V，而价值迭代直接把奖励低的pass掉，直接把奖励最高的按100%权重给当前的状态。 就这样，得到新的一轮V，重复这样的方法直到得到的V收敛即为最终确切的状态，然后再根据 <strong><span class="math inline">$\pi^*(s) = \arg\max\limits_a \left[ r(s, a) + \gamma \sum_{s'} P(s' | s, a) V^*(s') \right]$</span></strong> 反推出策略即可 <div class="note note-success">
