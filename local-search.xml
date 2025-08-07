@@ -42,11 +42,11 @@
   
   
   <entry>
-    <title>RL notes</title>
+    <title>RL home</title>
     <link href="/2025/08/05/RL-notes/"/>
     <url>/2025/08/05/RL-notes/</url>
     
-    <content type="html"><![CDATA[<h1 id="about-rl">About RL</h1><p>暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。</p><h2 id="references">References</h2><p>1.王树森 深度强化学习<br />2. 多智能体强化学习短学期ppt</p><div class="note note-success">            <h3 id="目录">目录</h3><p><a href="/RL1：强化学习基本概念，马尔科夫决策过程，DP/">RL1：强化学习基本概念，马尔科夫决策过程，DP</a></p>          </div>]]></content>
+    <content type="html"><![CDATA[<h1 id="about-rl">About RL</h1><p>暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。</p><h2 id="references">References</h2><p>1.王树森 深度强化学习<br />2. 多智能体强化学习短学期ppt</p><div class="note note-success">            <h3 id="目录">目录</h3><p><a href="/RL1：强化学习基本概念，马尔科夫决策过程，DP/"><u>RL1：强化学习基本概念，马尔科夫决策过程，DP</u></a></p>          </div>]]></content>
     
     
     
