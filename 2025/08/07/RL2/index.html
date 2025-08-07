@@ -19,21 +19,28 @@
   <meta name="author" content="zrw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="RL0： 基础数学知识 1.线性模型">
+    <meta name="description" content="RL2: Value estimation              在RL1中，介绍了MDP和基于其建模的动态规划方法。然而，这种方法十分依赖于对于整个环境和模型的充分了解；而在更多的无法明确地给出状态转移和奖励函数的情况下，我们就会更加依赖于直接从获得的数据中学习相应的价值与策略。 &gt;在这种情况下，智能体只能和环境进行交互，通过采样到的数据来学习，这类学习方法统称为无模型的强化学习（m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RL0">
-<meta property="og:url" content="http://example.com/2025/08/06/RL0/index.html">
+<meta property="og:title" content="RL2：Value estimation">
+<meta property="og:url" content="http://example.com/2025/08/07/RL2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="RL0： 基础数学知识 1.线性模型">
+<meta property="og:description" content="RL2: Value estimation              在RL1中，介绍了MDP和基于其建模的动态规划方法。然而，这种方法十分依赖于对于整个环境和模型的充分了解；而在更多的无法明确地给出状态转移和奖励函数的情况下，我们就会更加依赖于直接从获得的数据中学习相应的价值与策略。 &gt;在这种情况下，智能体只能和环境进行交互，通过采样到的数据来学习，这类学习方法统称为无模型的强化学习（m">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-06T00:44:21.000Z">
-<meta property="article:modified_time" content="2025-08-06T00:48:23.992Z">
+<meta property="article:published_time" content="2025-08-07T10:03:23.000Z">
+<meta property="article:modified_time" content="2025-08-07T12:19:41.423Z">
 <meta property="article:author" content="zrw">
+<meta property="article:tag" content="强化学习">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="蒙特卡洛">
+<meta property="article:tag" content="时序差分">
+<meta property="article:tag" content="资格迹">
+<meta property="article:tag" content="Q-learning">
+<meta property="article:tag" content="SARSA">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>RL0 - Hexo</title>
+  <title>RL2：Value estimation - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +206,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="RL0"></span>
+            <span id="subtitle" data-typed-text="RL2：Value estimation"></span>
           
         </div>
 
@@ -210,8 +217,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-06 08:44" pubdate>
-          2025年8月6日 早上
+        <time datetime="2025-08-07 18:03" pubdate>
+          2025年8月7日 晚上
         </time>
       </span>
     
@@ -222,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          12 字
+          247 字
         
       </span>
     
@@ -233,7 +240,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -270,13 +277,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">RL0</h1>
+            <h1 id="seo-header">RL2：Value estimation</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="rl0-基础数学知识">RL0： 基础数学知识</h1>
-<h2 id="线性模型">1.线性模型</h2>
+                <h1 id="rl2-value-estimation">RL2: Value estimation</h1>
+<div class="note note-success">
+            <p>在<a target="_blank" rel="noopener" href="https://zrwrz.github.io/RL1%EF%BC%9A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B%EF%BC%8CDP/"><strong><u>RL1</u></strong></a>中，介绍了MDP和基于其建模的动态规划方法。然而，这种方法十分依赖于对于整个环境和模型的充分了解；而在更多的无法明确地给出状态转移和奖励函数的情况下，我们就会更加依赖于直接从获得的数据中学习相应的价值与策略。 &gt;在这种情况下，智能体只能和环境进行交互，通过采样到的数据来学习，这类学习方法统称为无模型的强化学习（model-freereinforcement learning）</p>
+          </div>
+<h2 id="蒙特卡洛方法">1.蒙特卡洛方法</h2>
+<h3 id="总体思路概述">1.1 总体思路概述</h3>
+<p><strong>蒙特卡洛方法（Monte-Carlo methods，简称 MC）</strong> 在数学上是指一种依赖于大量随机抽样得到数值结果的方法，而在RL中，其思想为使用策略<span class="math inline"><em>π</em></span>从状态<span class="math inline"><em>s</em></span>采样<span class="math inline"><em>N</em></span>个样本，并使用经验均值累计奖励近似期望累计奖励(也就是V)的方法</p>
 
                 
               </div>
@@ -286,6 +298,25 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="print-no-link">#强化学习</a>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0/" class="print-no-link">#笔记</a>
+      
+        <a href="/tags/%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B/" class="print-no-link">#蒙特卡洛</a>
+      
+        <a href="/tags/%E6%97%B6%E5%BA%8F%E5%B7%AE%E5%88%86/" class="print-no-link">#时序差分</a>
+      
+        <a href="/tags/%E8%B5%84%E6%A0%BC%E8%BF%B9/" class="print-no-link">#资格迹</a>
+      
+        <a href="/tags/Q-learning/" class="print-no-link">#Q-learning</a>
+      
+        <a href="/tags/SARSA/" class="print-no-link">#SARSA</a>
+      
+    </div>
+  
 </div>
 
 
@@ -294,8 +325,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>RL0</div>
-      <div>http://example.com/2025/08/06/RL0/</div>
+      <div>RL2：Value estimation</div>
+      <div>http://example.com/2025/08/07/RL2/</div>
     </div>
     <div class="license-meta">
       
@@ -307,7 +338,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月6日</div>
+          <div>2025年8月7日</div>
         </div>
       
       
@@ -339,18 +370,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/07/RL2/" title="RL2：Value estimation">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">RL2：Value estimation</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/RL1%EF%BC%9A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B%EF%BC%8CDP/" title="RL1：强化学习基本概念，马尔科夫决策过程，DP">
-                        <span class="hidden-mobile">RL1：强化学习基本概念，马尔科夫决策过程，DP</span>
+                      <a href="/2025/08/06/RL0/" title="RL0">
+                        <span class="hidden-mobile">RL0</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

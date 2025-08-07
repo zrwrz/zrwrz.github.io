@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>RL2：Value estimation</title>
+    <link href="/2025/08/07/RL2/"/>
+    <url>/2025/08/07/RL2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="rl2-value-estimation">RL2: Value estimation</h1><div class="note note-success">            <p>在<a href="https://zrwrz.github.io/RL1%EF%BC%9A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B%EF%BC%8CDP/"><strong><u>RL1</u></strong></a>中，介绍了MDP和基于其建模的动态规划方法。然而，这种方法十分依赖于对于整个环境和模型的充分了解；而在更多的无法明确地给出状态转移和奖励函数的情况下，我们就会更加依赖于直接从获得的数据中学习相应的价值与策略。 &gt;在这种情况下，智能体只能和环境进行交互，通过采样到的数据来学习，这类学习方法统称为无模型的强化学习（model-freereinforcement learning）</p>          </div><h2 id="蒙特卡洛方法">1.蒙特卡洛方法</h2><h3 id="总体思路概述">1.1 总体思路概述</h3><p><strong>蒙特卡洛方法（Monte-Carlo methods，简称 MC）</strong> 在数学上是指一种依赖于大量随机抽样得到数值结果的方法，而在RL中，其思想为使用策略<span class="math inline"><em>π</em></span>从状态<span class="math inline"><em>s</em></span>采样<span class="math inline"><em>N</em></span>个样本，并使用经验均值累计奖励近似期望累计奖励(也就是V)的方法</p>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>强化学习</tag>
+      
+      <tag>笔记</tag>
+      
+      <tag>蒙特卡洛</tag>
+      
+      <tag>时序差分</tag>
+      
+      <tag>资格迹</tag>
+      
+      <tag>Q-learning</tag>
+      
+      <tag>SARSA</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>RL0</title>
     <link href="/2025/08/06/RL0/"/>
     <url>/2025/08/06/RL0/</url>
@@ -46,7 +77,7 @@
     <link href="/2025/08/05/RL-notes/"/>
     <url>/2025/08/05/RL-notes/</url>
     
-    <content type="html"><![CDATA[<h1 id="about-rl">About RL</h1><p>暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。</p><h2 id="references">References</h2><p>1.王树森 深度强化学习<br />2. 多智能体强化学习短学期ppt</p><div class="note note-success">            <h3 id="目录">目录</h3><p><a href="/RL1：强化学习基本概念，马尔科夫决策过程，DP/"><u>RL1：强化学习基本概念，马尔科夫决策过程，DP</u></a></p>          </div>]]></content>
+    <content type="html"><![CDATA[<h1 id="about-rl">About RL</h1><p>暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。</p><h2 id="references">References</h2><p>1.王树森 深度强化学习<br />2. 多智能体强化学习短学期ppt</p><div class="note note-success">            <h3 id="目录">目录</h3><p><a href="/RL1：强化学习基本概念，马尔科夫决策过程，DP/"><u>RL1：强化学习基本概念，马尔科夫决策过程，DP</u></a></p><p><a href="/RL2：Value-estimation/"><u>RL2：Value estimation</u></a></p>          </div>]]></content>
     
     
     
