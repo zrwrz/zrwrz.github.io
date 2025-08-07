@@ -32,8 +32,12 @@
 <meta property="og:image" content="http://example.com/RL1pictures/image-4.png">
 <meta property="og:image" content="http://example.com/RL1pictures/image-5.png">
 <meta property="og:image" content="http://example.com/RL1pictures/image-6.png">
+<meta property="og:image" content="http://example.com/RL1pictures/image-7.png">
+<meta property="og:image" content="http://example.com/RL1pictures/image-8.png">
+<meta property="og:image" content="http://example.com/RL1pictures/image-9.png">
+<meta property="og:image" content="http://example.com/RL1pictures/image-10.png">
 <meta property="article:published_time" content="2025-08-05T12:09:26.000Z">
-<meta property="article:modified_time" content="2025-08-06T13:14:59.098Z">
+<meta property="article:modified_time" content="2025-08-07T08:35:29.168Z">
 <meta property="article:author" content="zrw">
 <meta property="article:tag" content="强化学习">
 <meta property="article:tag" content="笔记">
@@ -233,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          2.9k 字
         
       </span>
     
@@ -244,7 +248,7 @@
         
         
         
-          16 分钟
+          25 分钟
         
       </span>
     
@@ -292,7 +296,7 @@
 <li>强化学习是机器学习的一个分支，专注于让智能体（Agent）通过与环境的交互学习最优策略，以最大化累积奖励。其核心思想是试错学习（Trial-and-Error），类似于人类或动物通过经验改进行为的过程。</li>
 </ul>
 <p>强化学习的主体为<strong>智能体(agent)</strong>，即为对环境做出感知、决策、行动的对象 <em>（e.g. 玩游戏时的角色&amp;自动驾驶的汽车）</em>；<strong>环境(environment)</strong> 是与智能体交互的一切外界规则与机理 <em>（即为智能体所处的“世界”）</em>，</p>
-<div class="note note-success">
+<div class="note note-warning">
             <h4 id="q-价值学习和策略学习分别是什么">Q: 价值学习和策略学习分别是什么？</h4><p>A:（以后慢慢补充）</p>
           </div>
 <hr />
@@ -311,6 +315,11 @@
 <li>奖励函数<strong>R</strong>: 人为设置的奖励对于训练模型很重要，通常来说需要设置一系列的<strong>r(s,a,s’)</strong> <em>(从状态s采取行为a转移到状态s’的奖励)</em> 给智能体，以达到最终的训练目的；有时奖励会退化为r(s,a) <div class="note note-primary">
             <h4 id="r_t与rsa的区别"><span class="math inline"><em>R</em><sub><em>t</em></sub></span>与<span class="math inline"><em>r</em>(<em>s</em>, <em>a</em>)</span>的区别：</h4><p>依旧让gpt来说： &gt; ( r(s, a) ): &gt;表示 <strong>某个状态下，执行某个动作后得到的即时奖励</strong>。 它更像是一个 <strong>奖励函数</strong>，给定状态 ( s ) 和动作 ( a )，返回一个奖励值。 它是环境对动作的即时反馈，通常与时间步无关。</p><blockquote><p>( r_t ): 表示在 <strong>特定时间步 ( t )</strong> 下，智能体执行某个动作后得到的即时奖励。 它是 <strong>即时奖励的时刻标记</strong>，指在时刻 ( t ) 上的反馈。 这个奖励可能与某个特定的状态或动作有关，通常用于标识当前时间步的奖励。 所以说，主要就是衡量的参数不同（状态、行为 or 时间）</p></blockquote>
           </div></li>
+</ul>
+<div class="note note-danger">
+            <p>缺一个MDP矩阵形式的解，但感觉没啥用，以后再补充</p>
+          </div>
+<ul>
 <li>折扣因子<strong>𝛾</strong>: 一个介于0和1之间的参数，由于（人之常情）需要多关注眼前立刻获得的回报，因此对于未来若干步之后才能取得的好处就要设置折扣因子来减小权重</li>
 </ul>
 <h3 id="回报价值函数策略">2.2 回报，价值函数，策略</h3>
@@ -328,12 +337,29 @@
 <div class="note note-primary">
             <p><strong>采样(sample)</strong> 和 <strong>轨迹(trajectory)</strong> 是另外两个比较重要的概念。gpt这样告诉我： &gt;在 强化学习 中，采样（sample）指的是从环境中收集单一数据点或一小段数据。通常来说，采样是从当前状态中通过采取一个动作获得的反馈信息。这些数据（状态、动作、奖励、下一个状态）通常是通过与环境交互而获得的一个时间步的数据点。每次从环境中收集到的一组（状态、动作、奖励、下一个状态）就是一个 采样。 轨迹（trajectory）通常指的是智能体从某一初始状态出发，通过多次采样所得到的一系列数据点。它是智能体在一段时间内与环境交互的整个过程。</p>
           </div>
+<h3 id="v与q-bellman">2.3 V与Q, Bellman</h3>
 <ol start="4" type="1">
 <li><strong>MDP的价值和回报</strong>：结合上面给出的策略概念，在使用策略<span class="math inline"><em>π</em></span>的前提下，我们很容易得到在相应策略下一个<strong>状态价值函数</strong> <span class="math inline"><em>V</em><sup><em>π</em></sup>(<em>s</em>)</span>的表达式 <img src="/RL1pictures/image-4.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 进一步地，定义<strong>价值-行为函数</strong> <span class="math inline"><em>Q</em><sup><em>π</em></sup>(<em>s</em>, <em>a</em>)</span>，指的是agent在采用策略<span class="math inline"><em>π</em></span>的大方向下，在当前状态s已经采取特定行为a之后，期望得到的总回报。</li>
 </ol>
 <div class="note note-primary">
-            <h3 id="v与q的关系">V与Q的关系</h3><p>根据上述的定义，可以比较容易得到V与Q之间的计算关系<img src="/RL1pictures/image-5.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 通俗地说，在给定的策略下，<strong>V为给定状态s的期望价值，Q为给定状态s和行为a的期望价值</strong>；因此V即为<span class="math inline"><em>π</em></span>的概率分布下各个行为期望价值的加权和。 从另一个角度看：<img src="/RL1pictures/image-6.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 就是拆一步当前行为、状态的即时奖励，再加上当前(s,a)转移到各个新状态的V回报的加权和。（当然还有<span class="math inline"><em>γ</em></span>）</p>
+            <h3 id="v与q的关系">V与Q的关系</h3><p>根据上述的定义，可以比较容易得到V与Q之间的计算关系<img src="/RL1pictures/image-5.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 通俗地说，在给定的策略下，<strong>V为给定状态s的期望价值，Q为给定状态s和行为a的期望价值</strong>；因此V即为<span class="math inline"><em>π</em></span>的概率分布下各个行为期望价值的加权和。 从另一个角度看：<img src="/RL1pictures/image-6.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 就是拆一步当前行为、状态的即时奖励，再加上当前(s,a)转移到各个新状态的V回报的加权和。（当然还有<span class="math inline"><em>γ</em></span>） <strong>简单来说，V和Q都是回报，只是涉及的变量不同</strong></p>
           </div>
+<p>5.<strong>贝尔曼期望方程，贝尔曼最优方程：策略评估与策略优化</strong> （1）贝尔曼期望方程：<img src="/RL1pictures/image-7.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 数学上来看，贝尔曼期望方程就是根据上面V与Q的关系转化为只有V和Q的形式。我理解其本质是一个“向后迭代一步”的方程，其<strong>将最后的回报转化为仅仅与下一步所有回报值的加权平均</strong>，同时也方便迭代递归求值 （2）贝尔曼最优方程：<img src="/RL1pictures/image-8.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 如果说贝尔曼期望方程是针对当前的策略计算值，那么贝尔曼最优方程是仅仅关注最优值，即在迭代过程中，不关心策略，而是每一步贪心，选择能让下一步回报最大的动作。</p>
+<hr />
+<h2 id="动态规划dynamic-programming">3. 动态规划(dynamic programming)</h2>
+<h3 id="introduction">3.1 introduction</h3>
+<p>在RL领域，动态规划主要用来解决一类<strong>已知环境模型</strong>的问题，结合上述的贝尔曼方程与DP的将全局寻求最优转化为每一步寻求为最优的思想解决问题。（后面会很容易看出为什么要这样） 首先定义一系列符号： 状态集合表示为 {0（终止状态）,1,2…n}，每个状态对应的可选动作集为 <strong><span class="math inline"><em>A</em>(<em>i</em>)</span></strong> <strong><span class="math inline"><em>p</em><sub><em>i</em>, <em>j</em></sub>(<em>a</em>)</span></strong> 表示在状态i,采取行动a转移到状态j的概率，<strong><span class="math inline"><em>r</em><sub><em>i</em>, <em>j</em></sub>(<em>a</em>)</span></strong> 表示在状态i,采取行动a转移到状态j的奖励，（前面还有k步后的折扣因子<span class="math inline"><em>γ</em><sup><em>k</em></sup></span>）</p>
+<p>动态规划期望得到一个最优的策略，即在每一个状态<span class="math inline"><em>i</em></span>下，都能给出一个当下最优的动作<span class="math inline"><em>μ</em>(<em>i</em>) ∈ <em>A</em>(<em>i</em>)</span></p>
+<h3 id="基于dp的强化学习算法bellman方程的应用">3.2 基于dp的强化学习算法————Bellman方程的应用</h3>
+<h4 id="策略迭代policy-iteration">3.2.1 策略迭代(policy iteration)</h4>
+<p>对于策略迭代，一般分为如下的两个步骤交替进行<img src="/RL1pictures/image-9.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<p>第一步的 <strong>策略评估</strong> 中，采取当前的策略，一般会为所有的状态定义一个（随机的）初始V值，之后不断使用Bellman期望方程进行迭代，直到收敛为止，以得到各个状态真实的奖励V值。 <div class="note note-danger">
+            <p>初始的策略应该可以完全随机设置；初始的V值感觉也可以随机设置，是否有影响存疑（我觉得无所谓）；同时，强大的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B7%B4%E6%8B%BF%E8%B5%AB%E4%B8%8D%E5%8A%A8%E7%82%B9%E5%AE%9A%E7%90%86/9492042">Banach不动点定理</a>保证一定可以得到最终的收敛解决；如下的简单推导确保优化结果一定越来越好<img src="/RL1pictures/image-10.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+          </div> 得到所有的V值之后，可以相应对于每一个状态s得到所有动作a的Q值，之后，进入<strong>策略优化</strong> 阶段，我们选取 <strong><span class="math inline">$\pi(s)=\arg\max\limits_a Q(s, a)$</span></strong> ,即直接用得到Q最大的动作a来作为新的策略 之后不断重复这两步，计算新的V Q，更新策略…… 直到策略收敛不再改变为止。</p>
+<h4 id="价值迭代value-iteration">3.2.2 价值迭代（value iteration）</h4>
+<p>核心表达式为 <strong><span class="math inline">$V(s) \leftarrow \max\limits_a \left[ r(s, a) + \gamma \sum_{s'} P(s' | s, a) V(s') \right]$</span></strong> ，通俗说，策略迭代需要计算所有行为得到的奖励再加权相加作为当前状态的V，而价值迭代直接把奖励低的pass掉，直接把奖励最高的按100%权重给当前的状态。 就这样，得到新的一轮V，重复这样的方法直到得到的V收敛即为最终确切的状态，然后再根据 <strong><span class="math inline">$\pi^*(s) = \arg\max\limits_a \left[ r(s, a) + \gamma \sum_{s'} P(s' | s, a) V^*(s') \right]$</span></strong> 反推出策略即可 <div class="note note-success">
+            <p>总结一下Bellman方程与DP: 结合具体的例子看Bellman方程比较好理解，期望方程就是把所有对应的<span class="math inline"><em>Q</em>(<em>s</em>, <em>a</em>)</span>加权得到新的V值，而最优方程就是把结果最好的<span class="math inline"><em>Q</em><sup>*</sup>(<em>s</em>, <em>a</em>)</span>直接作为新的V值；第一种方法对应不断迭代得到收敛的V值再进行优化的策略迭代算法，而由于这个阶段的巨大计算量，价值迭代则直接用最优的替代来节约计算时间。 然而，由于DP算法对于解决问题的要求很苛刻（要求所有的状态转移概率和获得奖励值全部已知），而大多数问题都显然比这个复杂，因此局限性还是很大的。</p>
+          </div></p>
 
                 
               </div>
