@@ -37,7 +37,7 @@
 <meta property="og:image" content="http://example.com/RL1pictures/image-9.png">
 <meta property="og:image" content="http://example.com/RL1pictures/image-10.png">
 <meta property="article:published_time" content="2025-08-05T12:09:26.000Z">
-<meta property="article:modified_time" content="2025-08-07T12:34:55.130Z">
+<meta property="article:modified_time" content="2025-08-09T10:00:45.327Z">
 <meta property="article:author" content="zrw">
 <meta property="article:tag" content="强化学习">
 <meta property="article:tag" content="笔记">
@@ -237,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.9k 字
+          3.1k 字
         
       </span>
     
@@ -248,7 +248,7 @@
         
         
         
-          25 分钟
+          26 分钟
         
       </span>
     
@@ -313,7 +313,7 @@
           </div>
 <ul>
 <li>奖励函数<strong>R</strong>: 人为设置的奖励对于训练模型很重要，通常来说需要设置一系列的<strong>r(s,a,s’)</strong> <em>(从状态s采取行为a转移到状态s’的奖励)</em> 给智能体，以达到最终的训练目的；有时奖励会退化为r(s,a) <div class="note note-primary">
-            <h4 id="r_t与rsa的区别"><span class="math inline"><em>R</em><sub><em>t</em></sub></span>与<span class="math inline"><em>r</em>(<em>s</em>, <em>a</em>)</span>的区别：</h4><p>依旧让gpt来说： &gt; ( r(s, a) ): &gt;表示 <strong>某个状态下，执行某个动作后得到的即时奖励</strong>。 它更像是一个 <strong>奖励函数</strong>，给定状态 ( s ) 和动作 ( a )，返回一个奖励值。 它是环境对动作的即时反馈，通常与时间步无关。</p><blockquote><p>( r_t ): 表示在 <strong>特定时间步 ( t )</strong> 下，智能体执行某个动作后得到的即时奖励。 它是 <strong>即时奖励的时刻标记</strong>，指在时刻 ( t ) 上的反馈。 这个奖励可能与某个特定的状态或动作有关，通常用于标识当前时间步的奖励。 所以说，主要就是衡量的参数不同（状态、行为 or 时间）</p></blockquote>
+            <h4 id="r_t与rsa的区别"><span class="math inline"><em>R</em><sub><em>t</em></sub></span>与<span class="math inline"><em>r</em>(<em>s</em>, <em>a</em>)</span>的区别：</h4><p>依旧让gpt来说： &gt; <span class="math inline"><em>r</em>(<em>s</em>, <em>a</em>)</span>: &gt; 表示 <strong>某个状态下，执行某个动作后得到的即时奖励</strong>。 它更像是一个 <strong>奖励函数</strong>，给定状态 <span class="math inline"><em>s</em></span> 和动作<span class="math inline"><em>a</em></span>，返回一个奖励值。 它是环境对动作的即时反馈，通常与时间步无关。</p><blockquote><p><span class="math inline"><em>r</em><sub><em>t</em></sub></span> : 表示在 <strong>特定时间步 <span class="math inline"><em>t</em></span></strong> 下，智能体执行某个动作后得到的即时奖励。 它是 <strong>即时奖励的时刻标记</strong>，指在时刻<span class="math inline"><em>t</em></span> 上的反馈。 这个奖励可能与某个特定的状态或动作有关，通常用于标识当前时间步的奖励。 所以说，主要就是衡量的参数不同（状态、行为 or 时间）</p></blockquote>
           </div></li>
 </ul>
 <div class="note note-danger">
@@ -329,13 +329,13 @@
 <li><p><strong>价值函数</strong>: 一个状态的期望回报即为这个状态的价值；价值函数 <strong><span class="math inline"><em>V</em>(<em>s</em>)</span></strong> 输入一个状态，输出这个状态的期望回报；价值函数可以写为 <span class="math inline"><em>V</em>(<em>s</em>) = <em>E</em>[<em>G</em><sub><em>t</em></sub>|<em>S</em><sub><em>t</em></sub> = <em>s</em>]</span>。进一步地，将其展开得到：<img src="/RL1pictures/image-3.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p></li>
 </ol>
 <div class="note note-primary">
-            <p>对于价值函数的定义式，在引入策略 <span class="math inline"><em>π</em></span>之前，感觉有些抽象，因为状态转移之间没有规律可寻，gpt这么说： &gt;在 强化学习 或 马尔可夫决策过程（MDP）的背景下，价值函数 𝑉(𝑠)主要用来评估每个状态的“好坏”。如果没有显式的策略𝜋，通常假设状态值函数 V(s) 是在某个<strong>默认策略</strong>下定义的，或者更常见的情况是我们关心的是<strong>最优策略</strong>。</p><p>因此，我觉得V是用来衡量状态“好坏”的抽象概念，具体要结合策略才有实际作用</p>
+            <p>对于价值函数的定义式，在引入策略 <span class="math inline"><em>π</em></span>之前，感觉有些抽象，因为状态转移之间没有规律可寻，gpt这么说： &gt; 在 强化学习 或 马尔可夫决策过程（MDP）的背景下，价值函数 𝑉(𝑠)主要用来评估每个状态的“好坏”。如果没有显式的策略𝜋，通常假设状态值函数 V(s) 是在某个<strong>默认策略</strong>下定义的，或者更常见的情况是我们关心的是<strong>最优策略</strong>。</p><p>因此，我觉得V是用来衡量状态“好坏”的抽象概念，具体要结合策略才有实际作用</p>
           </div>
 <ol start="3" type="1">
 <li><strong>策略(policy), <span class="math inline"><em>π</em></span></strong> 策略是智能体通过判断环境和状态，来决定下一步动作的函数。通常来说，策略分为<strong>确定性策略</strong>（一个状态对应唯一的动作：比如说，走迷宫设定策略为一直往前冲，除非看到墙就直接右拐）和<strong>随机性策略</strong>。在机器学习中，我们主要讨论随机性策略。 在随机性策略中,核心内容为概率密度函数 <strong><span class="math inline"><em>π</em>(<em>a</em>|<em>s</em>)</span></strong> ，其得到的结果为一个概率分布，为在当前策略&amp;状态s下，采取动作a的概率，即 <span class="math inline"><em>P</em>(<em>a</em><sub><em>t</em></sub> = <em>t</em>|<em>s</em><sub><em>t</em></sub> = <em>s</em>)</span>。</li>
 </ol>
 <div class="note note-primary">
-            <p><strong>采样(sample)</strong> 和 <strong>轨迹(trajectory)</strong> 是另外两个比较重要的概念。gpt这样告诉我： &gt;在 强化学习 中，采样（sample）指的是从环境中收集单一数据点或一小段数据。通常来说，采样是从当前状态中通过采取一个动作获得的反馈信息。这些数据（状态、动作、奖励、下一个状态）通常是通过与环境交互而获得的一个时间步的数据点。每次从环境中收集到的一组（状态、动作、奖励、下一个状态）就是一个 采样。 轨迹（trajectory）通常指的是智能体从某一初始状态出发，通过多次采样所得到的一系列数据点。它是智能体在一段时间内与环境交互的整个过程。</p>
+            <p><strong>采样(sample)</strong> 和 <strong>轨迹(trajectory)</strong> 是另外两个比较重要的概念。gpt这样告诉我： &gt; 在 强化学习 中，采样（sample）指的是从环境中收集单一数据点或一小段数据。通常来说，采样是从当前状态中通过采取一个动作获得的反馈信息。这些数据（状态、动作、奖励、下一个状态）通常是通过与环境交互而获得的一个时间步的数据点。每次从环境中收集到的一组（状态、动作、奖励、下一个状态）就是一个 采样。 轨迹（trajectory）通常指的是智能体从某一初始状态出发，通过多次采样所得到的一系列数据点。它是智能体在一段时间内与环境交互的整个过程。</p>
           </div>
 <h3 id="v与q-bellman">2.3 V与Q, Bellman</h3>
 <ol start="4" type="1">
@@ -355,7 +355,11 @@
 <p>对于策略迭代，一般分为如下的两个步骤交替进行<img src="/RL1pictures/image-9.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
 <p>第一步的 <strong>策略评估</strong> 中，采取当前的策略，一般会为所有的状态定义一个（随机的）初始V值，之后不断使用Bellman期望方程进行迭代，直到收敛为止，以得到各个状态真实的奖励V值。 <div class="note note-danger">
             <p>初始的策略应该可以完全随机设置；初始的V值感觉也可以随机设置，是否有影响存疑（我觉得无所谓）；同时，强大的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B7%B4%E6%8B%BF%E8%B5%AB%E4%B8%8D%E5%8A%A8%E7%82%B9%E5%AE%9A%E7%90%86/9492042"><strong><u>Banach不动点定理</u></strong></a>保证一定可以得到最终的收敛解决；如下的简单推导确保优化结果一定越来越好<img src="/RL1pictures/image-10.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
-          </div> 得到所有的V值之后，可以相应对于每一个状态s得到所有动作a的Q值，之后，进入<strong>策略优化</strong> 阶段，我们选取 <strong><span class="math inline">$\pi(s)=\arg\max\limits_a Q(s, a)$</span></strong> ,即直接用得到Q最大的动作a来作为新的策略 之后不断重复这两步，计算新的V Q，更新策略…… 直到策略收敛不再改变为止。</p>
+          </div> 得到所有的V值之后，可以相应对于每一个状态s得到所有动作a的Q值（也是根据Bellman方程的公式），之后，进入<strong>策略优化</strong> 阶段，我们选取 <strong><span class="math inline">$\pi(s)=\arg\max\limits_a Q(s, a)$</span></strong> ,即直接用得到Q最大的动作a来作为新的策略 之后不断重复这两步，计算新的V Q，更新策略…… 直到策略收敛不再改变为止。</p>
+<p><strong>更简单地说，贝尔曼方程就是用来求出V值，然后根据V求出所有的Q值，最后根据Q值来更新策略</strong></p>
+<div class="note note-danger">
+            <p>初学时陷入了一个误区：既然算出V后可以得到获得最好Q的行为a，那为什么不直接选择这个行为作为最佳策略？ 其实也很简单解决，因为这只是目前<span class="math inline"><em>π</em></span>看到的所谓好行为，但对于别的策略并非最优</p>
+          </div>
 <h4 id="价值迭代value-iteration">3.2.2 价值迭代（value iteration）</h4>
 <p>核心表达式为 <strong><span class="math inline">$V(s) \leftarrow \max\limits_a \left[ r(s, a) + \gamma \sum_{s'} P(s' | s, a) V(s') \right]$</span></strong> ，通俗说，策略迭代需要计算所有行为得到的奖励再加权相加作为当前状态的V，而价值迭代直接把奖励低的pass掉，直接把奖励最高的按100%权重给当前的状态。 就这样，得到新的一轮V，重复这样的方法直到得到的V收敛即为最终确切的状态，然后再根据 <strong><span class="math inline">$\pi^*(s) = \arg\max\limits_a \left[ r(s, a) + \gamma \sum_{s'} P(s' | s, a) V^*(s') \right]$</span></strong> 反推出策略即可 <div class="note note-success">
             <p>总结一下Bellman方程与DP: 结合具体的例子看Bellman方程比较好理解，期望方程就是把所有对应的<span class="math inline"><em>Q</em>(<em>s</em>, <em>a</em>)</span>加权得到新的V值，而最优方程就是把结果最好的<span class="math inline"><em>Q</em><sup>*</sup>(<em>s</em>, <em>a</em>)</span>直接作为新的V值；第一种方法对应不断迭代得到收敛的V值再进行优化的策略迭代算法，而由于这个阶段的巨大计算量，价值迭代则直接用最优的替代来节约计算时间。 然而，由于DP算法对于解决问题的要求很苛刻（要求所有的状态转移概率和获得奖励值全部已知），而大多数问题都显然比这个复杂，因此局限性还是很大的。</p>
