@@ -28,8 +28,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/RL2pictures/image-11.png">
 <meta property="og:image" content="http://example.com/RL2pictures/image-12.png">
+<meta property="og:image" content="http://example.com/RL2pictures/image-13.png">
 <meta property="article:published_time" content="2025-08-07T10:03:23.000Z">
-<meta property="article:modified_time" content="2025-08-09T11:11:02.528Z">
+<meta property="article:modified_time" content="2025-08-10T02:18:46.443Z">
 <meta property="article:author" content="zrw">
 <meta property="article:tag" content="强化学习">
 <meta property="article:tag" content="笔记">
@@ -232,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          983 字
+          1.2k 字
         
       </span>
     
@@ -243,7 +244,7 @@
         
         
         
-          9 分钟
+          10 分钟
         
       </span>
     
@@ -295,15 +296,19 @@
 <h3 id="具体实现方法">1.2 具体实现方法</h3>
 <p>一般来说，在实现蒙特卡罗方法的时候，我们需要使用固定的策略模拟若干个回合并且相应记录累计奖励，对于没有明确终止条件的情况，一般规定一个<span class="math inline"><em>T</em></span>为应用策略<span class="math inline"><em>π</em></span>采样的时间数。（只有有限MDP可以模拟到结束）之后，通过不断累加总的采样次数<span class="math inline"><em>N</em>(<em>s</em>)</span>(表示从状态s开始采样)和总的累计奖励<span class="math inline"><em>V</em>(<em>s</em>)</span>,当<span class="math inline"><em>N</em>(<em>s</em>)</span>足够大的时候，就可以利用<span class="math inline"><em>V</em>(<em>s</em>)/<em>N</em>(<em>s</em>)</span>来估计状态<span class="math inline"><em>s</em></span>的价值。</p>
 <div class="note note-primary">
-            <p>1.总结一下，Monte-Carlo就是提供了在对环境完全位置的情况下通过多次模拟算出<span class="math inline"><em>V</em><sup><em>π</em></sup>(<em>s</em>)</span>的方法，这可以 <strong>“帮助你理解，在某一状态下，执行策略的长期回报是什么。这对于强化学习的策略评估非常有用，尤其是在不知道环境动态的情况下。”</strong> 2.在实操的时候，为了节约计算量，直接使用增量的方式进行更新<img src="/RL2pictures/image-11.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 第二部分的更新公式为后面Q-learning要使用的增量公式，数学推导也很简单，具体作用往下看</p>
+            <p>1.总结一下，Monte-Carlo就是提供了在对环境完全未知的情况下通过多次模拟算出<span class="math inline"><em>V</em><sup><em>π</em></sup>(<em>s</em>)</span>的方法，这可以 <strong>“帮助你理解，在某一状态下，执行策略的长期回报是什么。这对于强化学习的策略评估非常有用，尤其是在不知道环境动态的情况下。”</strong> 2.在实操的时候，为了节约计算量，直接使用增量的方式进行更新<img src="/RL2pictures/image-11.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 第二部分的更新公式为后面Q-learning要使用的增量公式，数学推导也很简单，具体作用往下看</p>
           </div>
 <p>有些时候，会碰到更加复杂的情况：有可能环境不仅转移概率为止，而且可能是<strong>非平稳环境（Non-Stationary Environment）</strong> ，即环境的转移概率和奖励函数会随时间而改变。在这种时候，按照之前的方法采用蒙特卡洛显然不适用，因此采用以下的<strong>滑动窗口</strong>技术：<img src="/RL2pictures/image-12.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 在这个时候，仍然像之前一样算出每一次采样之后的V值，然后与先前不同的是，采用一个固定长度的“窗口”进行计算：每次纳入一个新的值的同时删除最老的。在这个时候，由于窗口长度固定，因此增量的改变也变成了乘上固定的系数<span class="math inline"><em>α</em></span>，其大小为窗口长度的倒数。<strong>(和learning rate一点关系都没有！)</strong></p>
 <div class="note note-warning">
-            <p>那么环境不断变化，窗口什么时候才要停下来呢？gpt这么解释： &gt; 在 非平稳环境 中，环境是不断变化的，因此滑动窗口和蒙特卡洛方法的 停止条件 和 估计收敛 是相对复杂的。关键在于平衡 适应环境的变化 和 获得稳定估计 之间的关系。在 非平稳环境 中，估计值是不断调整的，因为环境的状态转移和奖励会随时间变化。 有点抽象，后面尽量结合例子理解（大概意思是，会根据环境不断变，就让它一直跑下去就行）</p>
+            <p>那么环境不断变化，窗口什么时候才要停下来呢？gpt这么解释： &gt; 在非平稳环境中，环境是不断变化的，因此滑动窗口和蒙特卡洛方法的 停止条件 和 估计收敛 是相对复杂的。关键在于平衡 适应环境的变化 和 获得稳定估计 之间的关系。在 非平稳环境 中，估计值是不断调整的，因为环境的状态转移和奖励会随时间变化。 有点抽象，后面尽量结合例子理解（大概意思是，会根据环境不断变，就让它一直跑下去就行）</p><p><strong>同时可以比较容易看出，可以使用蒙特卡罗方法进行估计的前提是两个状态之间转移的奖励必须是已知的，否则无法进行计算！</strong></p>
           </div>
 <h2 id="时序差分方法">2.时序差分方法</h2>
 <h3 id="总体方法概述">2.1 总体方法概述</h3>
-<p><strong>时序差分方法（ Temporal Difference methods，TD）</strong> 是另外一种模型无关的，直接使用经验学习的方法。</p>
+<p><strong>时序差分方法（ Temporal Difference methods，TD）</strong> 是另外一种模型无关的，直接使用经验学习的方法。时序差分方法的核心公式如下：<img src="/RL2pictures/image-13.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 在时序差分中，我们通过当前行为带来的即时奖励以及下一个回合的V值与<span class="math inline"><em>γ</em></span>（也就是，对于未来的估计值）来更新当前状态的价值V</p>
+<div class="note note-primary">
+            <p>这里使用学习率 <strong><span class="math inline"><em>α</em></span></strong> 来控制更新大小的大小，是为了避免产生过度更新的问题，比如更新值过大导致来回震荡，而加上一个系数可以保证平滑更新</p>
+          </div>
+<h3 id="具体实现方法-1">2.2 具体实现方法</h3>
 
                 
               </div>
