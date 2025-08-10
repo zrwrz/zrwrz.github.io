@@ -29,8 +29,11 @@
 <meta property="og:image" content="http://example.com/RL2pictures/image-11.png">
 <meta property="og:image" content="http://example.com/RL2pictures/image-12.png">
 <meta property="og:image" content="http://example.com/RL2pictures/image-13.png">
+<meta property="og:image" content="http://example.com/RL2pictures/image-14.png">
+<meta property="og:image" content="http://example.com/RL2pictures/image-15.png">
+<meta property="og:image" content="http://example.com/2025/08/07/RL2/image-16.png">
 <meta property="article:published_time" content="2025-08-07T10:03:23.000Z">
-<meta property="article:modified_time" content="2025-08-10T02:18:46.443Z">
+<meta property="article:modified_time" content="2025-08-10T08:30:48.439Z">
 <meta property="article:author" content="zrw">
 <meta property="article:tag" content="强化学习">
 <meta property="article:tag" content="笔记">
@@ -233,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.6k 字
         
       </span>
     
@@ -244,7 +247,7 @@
         
         
         
-          10 分钟
+          14 分钟
         
       </span>
     
@@ -308,7 +311,15 @@
 <div class="note note-primary">
             <p>这里使用学习率 <strong><span class="math inline"><em>α</em></span></strong> 来控制更新大小的大小，是为了避免产生过度更新的问题，比如更新值过大导致来回震荡，而加上一个系数可以保证平滑更新</p>
           </div>
-<h3 id="具体实现方法-1">2.2 具体实现方法</h3>
+<h3 id="时序差分-vs-蒙特卡洛">2.2 时序差分 vs 蒙特卡洛</h3>
+<p>（1）从上面的定义就可以看出，时序差分方法在每一次执行动作之后都会利用下一个状态的<span class="math inline"><em>V</em></span>值更新（每一步后可以进行在线学习），而蒙特卡洛则需要跑完一个回合之后才会利用累计奖励对于<span class="math inline"><em>V</em>(<em>s</em>)</span>值进行更新 （2）很容易知道蒙特卡洛方法一定是<strong>无偏估计</strong>，而时序差分方法由于使用的就是下一个状态的猜测值<span class="math inline"><em>V</em>(<em>s</em><sub><em>t</em> + 1</sub>)</span>而不是该策略下的真实值<span class="math inline"><em>V</em><sup><em>π</em></sup>(<em>s</em><sub><em>t</em> + 1</sub>)</span>。因此，TD是有偏估计。 （3）时序差分方法对于初始值更加敏感，而蒙特卡洛方法对于初始值不敏感 （4）蒙特卡洛方法得到的结果的方差更大，而时序差分方法得到的结果方差更小 总结下来如图所示：<img src="/RL2pictures/image-14.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<h2 id="资格迹方法">3. 资格迹方法</h2>
+<h3 id="总体方法概述-1">3.1 总体方法概述</h3>
+<p>如果说把使用窗口的蒙特卡洛方法中的窗口大小倒数<span class="math inline"><em>α</em></span>看作类似于“学习率”的参数，那么前面三个方法的关系可以这样概括：时序差分是只参考当前下一步的估计方法，资格迹方法是参考下面若干步的多步时序差分方法，而蒙特卡洛方法则是参考未来无限步（直到回合结束）的方法。</p>
+<p>因此，<strong>资格迹方法（Eligibility Traces methods）</strong> 可以看作是前面两种方法的一个平衡，其平衡了方差和偏差的关系，是一种比较折中的方案。依葫芦画瓢得到如下的公式：<img src="/RL2pictures/image-15.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<h3 id="具体实现">3.2 具体实现</h3>
+<h4 id="td-lambda-方法">3.2.1 <span class="math inline"><em>T</em><em>D</em> − <em>λ</em></span> 方法</h4>
+<p>所谓的 <strong><span class="math inline"><em>T</em><em>D</em> − <em>λ</em></span>方法</strong>，是指使用一个超参数<span class="math inline"><em>λ</em></span> 进行控制后续使用的各个阶段G的权重，具体如下：<img src="image-16.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
 
                 
               </div>
