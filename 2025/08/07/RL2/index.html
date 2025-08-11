@@ -36,7 +36,7 @@
 <meta property="og:image" content="http://example.com/RL2pictures/image-18.png">
 <meta property="og:image" content="http://example.com/RL2pictures/image-19.png">
 <meta property="article:published_time" content="2025-08-07T10:03:23.000Z">
-<meta property="article:modified_time" content="2025-08-10T11:42:17.026Z">
+<meta property="article:modified_time" content="2025-08-11T12:13:22.294Z">
 <meta property="article:author" content="zrw">
 <meta property="article:tag" content="强化学习">
 <meta property="article:tag" content="笔记">
@@ -331,7 +331,8 @@
 <h3 id="核心思想">4.1 核心思想</h3>
 <p>强化学习的核心部分便是<strong>策略评估和策略优化</strong> （recall：之前dp的策略迭代和策略评估），具体都在下图中有所指出：<img src="/RL2pictures/image-19.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 也就是说，策略评估就是估算出<span class="math inline"><em>V</em></span>,(也就是之前几个部分在做的)，之后再根据算出来的<span class="math inline"><em>V</em><sup><em>π</em></sup>(<em>s</em>)</span>，来选择最好的策略（动作）</p>
 <h3 id="sarsa">4.2 SARSA</h3>
-<h4 id="section">4.2.1</h4>
+<h4 id="总体方法概述-2">4.2.1 总体方法概述</h4>
+<p>所谓的SARSA，指的是<strong>S</strong>tate-<strong>A</strong>ction-<strong>R</strong>eward-<strong>S</strong>tate-<strong>A</strong>ction。先来看一段伪代码，直观反映了这个方法的运行步骤：</p>
 
                 
               </div>
