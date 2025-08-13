@@ -19,23 +19,26 @@
   <meta name="author" content="zrw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="About RL 暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。 References 1.王树森 深度强化学习 2. 多智能体强化学习短学期ppt              目录RL1：强化学习基本概念，马尔科夫决策过程，DPRL2：Value estimation RL3：深度学习&amp;DQN">
+    <meta name="description" content="RL3: 深度学习&amp;DQN              这个部分的笔记主要介绍一些深度学习的基础内容，以及其与强化学习结合的DQN方法的例子            1. 深度学习基础 1.1 神经元&amp;神经网络 在神经网络中，“神经元”是其中最基本的组成单位，其基本结构如下所示： 也就是说，输入了一系列有一定权重的量加上偏置值，然后经过激活函数，得到输出。有如下几个概念： （">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RL home">
-<meta property="og:url" content="http://example.com/2025/08/05/RL-notes/index.html">
+<meta property="og:title" content="RL3：深度学习&amp;DQN">
+<meta property="og:url" content="http://example.com/2025/08/13/RL3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="About RL 暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。 References 1.王树森 深度强化学习 2. 多智能体强化学习短学期ppt              目录RL1：强化学习基本概念，马尔科夫决策过程，DPRL2：Value estimation RL3：深度学习&amp;DQN">
+<meta property="og:description" content="RL3: 深度学习&amp;DQN              这个部分的笔记主要介绍一些深度学习的基础内容，以及其与强化学习结合的DQN方法的例子            1. 深度学习基础 1.1 神经元&amp;神经网络 在神经网络中，“神经元”是其中最基本的组成单位，其基本结构如下所示： 也就是说，输入了一系列有一定权重的量加上偏置值，然后经过激活函数，得到输出。有如下几个概念： （">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-08-05T01:45:17.000Z">
-<meta property="article:modified_time" content="2025-08-13T03:23:05.999Z">
+<meta property="og:image" content="http://example.com/RL3pictures/image-26.png">
+<meta property="og:image" content="http://example.com/RL3pictures/image-27.png">
+<meta property="og:image" content="http://example.com/RL3pictures/image-28.png">
+<meta property="article:published_time" content="2025-08-13T00:27:23.000Z">
+<meta property="article:modified_time" content="2025-08-13T03:32:49.187Z">
 <meta property="article:author" content="zrw">
-<meta property="article:tag" content="强化学习">
-<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="强化学习，笔记，深度学习，DQN">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/RL3pictures/image-26.png">
   
   
   
-  <title>RL home - Hexo</title>
+  <title>RL3：深度学习&amp;DQN - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +204,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="RL home"></span>
+            <span id="subtitle" data-typed-text="RL3：深度学习&amp;DQN"></span>
           
         </div>
 
@@ -212,8 +215,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-05 09:45" pubdate>
-          2025年8月5日 上午
+        <time datetime="2025-08-13 08:27" pubdate>
+          2025年8月13日 早上
         </time>
       </span>
     
@@ -224,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          78 字
+          319 字
         
       </span>
     
@@ -235,7 +238,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -272,19 +275,18 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">RL home</h1>
+            <h1 id="seo-header">RL3：深度学习&amp;DQN</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="about-rl">About RL</h1>
-<p>暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。</p>
-<h2 id="references">References</h2>
-<p>1.王树森 深度强化学习<br />
-2. 多智能体强化学习短学期ppt</p>
+                <h1 id="rl3-深度学习dqn">RL3: 深度学习&amp;DQN</h1>
 <div class="note note-success">
-            <h3 id="目录">目录</h3><p><a href="/RL1：强化学习基本概念，马尔科夫决策过程，DP/"><u>RL1：强化学习基本概念，马尔科夫决策过程，DP</u></a></p><p><a href="/RL2：Value-estimation/"><u>RL2：Value estimation</u></a> <a href="/RL3：深度学习&amp;DQN/"><u>RL3：深度学习&amp;DQN</u></a></p>
+            <p>这个部分的笔记主要介绍一些深度学习的基础内容，以及其与强化学习结合的DQN方法的例子</p>
           </div>
+<h2 id="深度学习基础">1. 深度学习基础</h2>
+<h3 id="神经元神经网络">1.1 神经元&amp;神经网络</h3>
+<p>在神经网络中，“神经元”是其中最基本的组成单位，其基本结构如下所示：<img src="/RL3pictures/image-26.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 也就是说，输入了一系列有一定权重的量加上偏置值，然后经过激活函数，得到输出。有如下几个概念： （1）感知机（perceptron）：我理解感知机是一种单元的、初级的神经元（单元的网络），其包括了神经元的所有特性内容，但是最后的激活函数<span class="math inline"><em>f</em></span>一般是简单的<strong>符号函数</strong> ，即简单的对于内容的正负进行区分。 感知机只能用于处理简单的<strong>线性可分问题</strong> ，由于其激活函数的限制，只能生成一个二分数据的超平面。对于复杂一点的情况（比如<strong>xor</strong>问题），其就无法解决。 （2）激活函数：为了解决感知机无法解决的问题，现代神经网络采用了多种多样的激活函数，如图所示，用于不同的场景 <img src="/RL3pictures/image-27.png" srcset="/img/loading.gif" lazyload alt="alt text" /> <img src="/RL3pictures/image-28.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
 
                 
               </div>
@@ -318,9 +320,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="print-no-link">#强化学习</a>
-      
-        <a href="/tags/%E7%AC%94%E8%AE%B0/" class="print-no-link">#笔记</a>
+        <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%8C%E7%AC%94%E8%AE%B0%EF%BC%8C%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%EF%BC%8CDQN/" class="print-no-link">#强化学习，笔记，深度学习，DQN</a>
       
     </div>
   
@@ -332,8 +332,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>RL home</div>
-      <div>http://example.com/2025/08/05/RL-notes/</div>
+      <div>RL3：深度学习&amp;DQN</div>
+      <div>http://example.com/2025/08/13/RL3/</div>
     </div>
     <div class="license-meta">
       
@@ -345,7 +345,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月5日</div>
+          <div>2025年8月13日</div>
         </div>
       
       
@@ -377,18 +377,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/RL1%EF%BC%9A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B%EF%BC%8CDP/" title="RL1：强化学习基本概念，马尔科夫决策过程，DP">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">RL1：强化学习基本概念，马尔科夫决策过程，DP</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/08/04/hello-world/" title="hexo 常用命令&amp;指南">
-                        <span class="hidden-mobile">hexo 常用命令&amp;指南</span>
+                      <a href="/2025/08/07/RL2/" title="RL2：Value estimation">
+                        <span class="hidden-mobile">RL2：Value estimation</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>RL3：深度学习&amp;DQN</title>
+    <link href="/2025/08/13/RL3/"/>
+    <url>/2025/08/13/RL3/</url>
+    
+    <content type="html"><![CDATA[<h1 id="rl3-深度学习dqn">RL3: 深度学习&amp;DQN</h1><div class="note note-success">            <p>这个部分的笔记主要介绍一些深度学习的基础内容，以及其与强化学习结合的DQN方法的例子</p>          </div><h2 id="深度学习基础">1. 深度学习基础</h2><h3 id="神经元神经网络">1.1 神经元&amp;神经网络</h3><p>在神经网络中，“神经元”是其中最基本的组成单位，其基本结构如下所示：<img src="/RL3pictures/image-26.png" alt="alt text" /> 也就是说，输入了一系列有一定权重的量加上偏置值，然后经过激活函数，得到输出。有如下几个概念： （1）感知机（perceptron）：我理解感知机是一种单元的、初级的神经元（单元的网络），其包括了神经元的所有特性内容，但是最后的激活函数<span class="math inline"><em>f</em></span>一般是简单的<strong>符号函数</strong> ，即简单的对于内容的正负进行区分。 感知机只能用于处理简单的<strong>线性可分问题</strong> ，由于其激活函数的限制，只能生成一个二分数据的超平面。对于复杂一点的情况（比如<strong>xor</strong>问题），其就无法解决。 （2）激活函数：为了解决感知机无法解决的问题，现代神经网络采用了多种多样的激活函数，如图所示，用于不同的场景 <img src="/RL3pictures/image-27.png" alt="alt text" /> <img src="/RL3pictures/image-28.png" alt="alt text" /></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>强化学习</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>强化学习，笔记，深度学习，DQN</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>RL2：Value estimation</title>
     <link href="/2025/08/07/RL2/"/>
     <url>/2025/08/07/RL2/</url>
@@ -95,7 +120,7 @@
     <link href="/2025/08/05/RL-notes/"/>
     <url>/2025/08/05/RL-notes/</url>
     
-    <content type="html"><![CDATA[<h1 id="about-rl">About RL</h1><p>暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。</p><h2 id="references">References</h2><p>1.王树森 深度强化学习<br />2. 多智能体强化学习短学期ppt</p><div class="note note-success">            <h3 id="目录">目录</h3><p><a href="/RL1：强化学习基本概念，马尔科夫决策过程，DP/"><u>RL1：强化学习基本概念，马尔科夫决策过程，DP</u></a></p><p><a href="/RL2：Value-estimation/"><u>RL2：Value estimation</u></a></p>          </div>]]></content>
+    <content type="html"><![CDATA[<h1 id="about-rl">About RL</h1><p>暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。</p><h2 id="references">References</h2><p>1.王树森 深度强化学习<br />2. 多智能体强化学习短学期ppt</p><div class="note note-success">            <h3 id="目录">目录</h3><p><a href="/RL1：强化学习基本概念，马尔科夫决策过程，DP/"><u>RL1：强化学习基本概念，马尔科夫决策过程，DP</u></a></p><p><a href="/RL2：Value-estimation/"><u>RL2：Value estimation</u></a> <a href="/RL3：深度学习&amp;DQN/"><u>RL3：深度学习&amp;DQN</u></a></p>          </div>]]></content>
     
     
     <categories>
