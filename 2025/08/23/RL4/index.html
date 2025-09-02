@@ -26,15 +26,15 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="RL4: 策略梯度和策略优化              首先介绍几个思想： （1）策略参数化：本质上来讲，一个策略是一个从一个特定的状态到一个动作的映射，而策略参数化则是指使用一个函数来表示一个策略，之后通过这个函数在训练的过程中不断调整来优化策略。比如说，我的参数化的策略可能是一个神经网络，根据不同的输入情况输出一系列动作执行的概率，在训练的过程中不断优化当前的方案。 策略参数化表示为 πθ(">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2025/08/23/RL4/image-36.png">
-<meta property="og:image" content="http://example.com/2025/08/23/RL4/image-37.png">
-<meta property="og:image" content="http://example.com/2025/08/23/RL4/image-38.png">
-<meta property="og:image" content="http://example.com/2025/08/23/RL4/image-39.png">
+<meta property="og:image" content="http://example.com/RL4pictures/image-36.png">
+<meta property="og:image" content="http://example.com/RL4pictures/image-37.png">
+<meta property="og:image" content="http://example.com/RL4pictures/image-38.png">
+<meta property="og:image" content="http://example.com/RL4pictures/image-39.png">
 <meta property="article:published_time" content="2025-08-23T01:49:41.000Z">
-<meta property="article:modified_time" content="2025-08-24T01:52:25.563Z">
+<meta property="article:modified_time" content="2025-09-02T12:16:07.218Z">
 <meta property="article:author" content="zrw">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2025/08/23/RL4/image-36.png">
+<meta name="twitter:image" content="http://example.com/RL4pictures/image-36.png">
   
   
   
@@ -285,7 +285,7 @@
             <p>首先介绍几个思想： （1）<strong>策略参数化</strong>：本质上来讲，一个策略是一个从一个特定的状态到一个动作的映射，而策略参数化则是指使用一个函数来表示一个策略，之后通过这个函数在训练的过程中不断调整来优化策略。比如说，我的参数化的策略可能是一个神经网络，根据不同的输入情况输出一系列动作执行的概率，在训练的过程中不断优化当前的方案。 策略参数化表示为 <span class="math inline"><em>π</em><sub><em>θ</em></sub>(<em>a</em>|<em>s</em>)</span>，其中<span class="math inline"><em>θ</em></span>即为用来调整优化策略的参数 （2）</p>
           </div>
 <h2 id="策略梯度介绍">1. 策略梯度介绍</h2>
-<p><img src="image-36.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 在之前的RL2中，用到的一些方法都是适用于表格形式的策略，其应用的场景多为状态-动作的数量比较小的情况；而在更多的情况下使用策略梯度是另外一种可行的方案，二者的核心区别为： <img src="image-37.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 对于表格型策略，由于对于每一个状态<span class="math inline"><em>s</em></span>其均最大化了<span class="math inline"><em>Q</em>(<em>s</em>, <em>a</em>)</span>，因此其一定是最优解；而根据参数化策略优化的就不一定了（可能是一个局部的最优解），二者的关系如下：<img src="image-38.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 总体来说，策略优化即为：寻找一个用于衡量策略的优劣的目标函数 <strong><span class="math inline"><em>J</em>(<em>θ</em>)</span></strong> ，然后借助目标函数优化。 因此，对于策略梯度，其关键点就在于以下的两点： （1）如何设计合适的目标函数？ （2）如何进行计算和优化？（设定合适的learning rate 计算梯度，etc.） ### 1.1 目标函数的选择 如图所示，一般有如下的几种选择目标函数的方式，根据不同的任务和算法需求，选取不同的目标函数：<img src="image-39.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<p><img src="/RL4pictures/image-36.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 在之前的RL2中，用到的一些方法都是适用于表格形式的策略，其应用的场景多为状态-动作的数量比较小的情况；而在更多的情况下使用策略梯度是另外一种可行的方案，二者的核心区别为： <img src="/RL4pictures/image-37.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 对于表格型策略，由于对于每一个状态<span class="math inline"><em>s</em></span>其均最大化了<span class="math inline"><em>Q</em>(<em>s</em>, <em>a</em>)</span>，因此其一定是最优解；而根据参数化策略优化的就不一定了（可能是一个局部的最优解），二者的关系如下：<img src="/RL4pictures/image-38.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 总体来说，策略优化即为：寻找一个用于衡量策略的优劣的目标函数 <strong><span class="math inline"><em>J</em>(<em>θ</em>)</span></strong> ，然后借助目标函数优化。 因此，对于策略梯度，其关键点就在于以下的两点： （1）如何设计合适的目标函数？ （2）如何进行计算和优化？（设定合适的learning rate 计算梯度，etc.） ### 1.1 目标函数的选择 如图所示，一般有如下的几种选择目标函数的方式，根据不同的任务和算法需求，选取不同的目标函数：<img src="/RL4pictures/image-39.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
 
                 
               </div>
