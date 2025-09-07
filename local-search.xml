@@ -4,13 +4,25 @@
   
   
   <entry>
-    <title>论文：Memory Networks</title>
-    <link href="/2025/09/05/%E8%AE%BA%E6%96%87%EF%BC%9AMemory-Networks/"/>
-    <url>/2025/09/05/%E8%AE%BA%E6%96%87%EF%BC%9AMemory-Networks/</url>
+    <title>论文: LSTM: A Search Space Odyssey</title>
+    <link href="/2025/09/07/%E8%AE%BA%E6%96%87-LSTM-A-Search-Space-Odyssey/"/>
+    <url>/2025/09/07/%E8%AE%BA%E6%96%87-LSTM-A-Search-Space-Odyssey/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="lstm-a-search-space-odyssey">LSTM: A Search Space Odyssey</h1><p><a href="LSTM/LSTM%20A%20Search%20Space%20Odyssey.pdf">原论文pdf</a> 这是一篇关于LSTM的论文；Odyssey，引申意自《奥德赛》（吗？），意为“艰难的跋涉，漫长的旅程” ## 0. abstract <div class="note note-primary">            <p><strong>Learn some English</strong> 1. state-of-the-art: 目前最好的，最先进的 2. inception: 开端，创始 3. utility: 帮助，实用性 4. variants: 变体，变种</p>          </div> 从摘要中总结看出，所谓的LSTM（长短期记忆）是一种RNN结构的变体，主要解决了RNN中常出现的<strong>梯度爆炸</strong>的问题；这篇文章主要使用了<strong>随机搜索</strong>方法探索了最优的超参数设置，发现了现有的LSTM变体中，没有模型可以很显著提升当前的标准LSTM架构。 ## 1. Introduction <div class="note note-primary">            <p><strong>Learn some English</strong> 1. hurdle: 障碍，困难 2. plague: 困扰，折磨(做v.时的意思) 3. acoustic: 声学的 4. incorporate: 集成，包含</p>          </div></p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>强化学习</tag>
+      
+      <tag>LSTM</tag>
+      
+      <tag>RNN</tag>
+      
+      <tag>论文</tag>
+      
+    </tags>
     
   </entry>
   
@@ -47,7 +59,7 @@
     <link href="/2025/08/13/RL3/"/>
     <url>/2025/08/13/RL3/</url>
     
-    <content type="html"><![CDATA[<h1 id="rl3-深度学习dqn">RL3: 深度学习&amp;DQN</h1><div class="note note-success">            <p>这个部分的笔记主要介绍一些深度学习的基础内容，以及其与强化学习结合的DQN方法的例子。由于深度学习不是这个部分的重点，就简单梳理一下框架，具体的各个算法和函数背后的原理就罗列一下，不去深入学习了（）</p>          </div><h2 id="深度学习基础">1. 深度学习基础</h2><h3 id="神经元神经网络神经网络训练">1.1 神经元&amp;神经网络，神经网络训练</h3><p>在神经网络中，“神经元”是其中最基本的组成单位，其基本结构如下所示：<img src="/RL3pictures/image-26.png" alt="alt text" /> 也就是说，输入了一系列有一定权重的量加上偏置值，然后经过激活函数，得到输出。有如下几个概念： （1）<strong>感知机（perceptron）</strong>：我理解感知机是一种单元的、初级的神经元（单元的网络），其包括了神经元的所有特性内容，但是最后的激活函数<span class="math inline"><em>f</em></span>一般是简单的<strong>符号函数</strong> ，即简单的对于内容的正负进行区分。 感知机只能用于处理简单的<strong>线性可分问题</strong> ，由于其激活函数的限制，只能生成一个二分数据的超平面。对于复杂一点的情况（比如<strong>xor</strong>问题），其就无法解决。 （2）<strong>激活函数</strong>：为了解决感知机无法解决的问题，现代神经网络采用了多种多样的激活函数，如图所示，用于不同的场景 <img src="/RL3pictures/image-27.png" alt="alt text" /> <img src="/RL3pictures/image-28.png" alt="alt text" /> 以上介绍了神经网络中神经元的基本结构，下面是一些更加深入的内容 （3）<strong>损失函数</strong>：损失函数是评估训练时神经网络输出的结果和真实值之间差距的函数，是用来衡量训练出的模型好坏的评估指标。根据问题的不同，分别选择不同的损失函数，如图所示 <img src="/RL3pictures/image-29.png" alt="alt text" /> <img src="/RL3pictures/image-30.png" alt="alt text" /></p><div class="note note-primary">            <p>神经网络的两个主要研究对象： <strong>回归问题（regression problem）</strong>：预测一个连续的数值输出，即根据输入的特征预测一个特定的数值。比如说，预测房价、温度，etc <strong>分类问题（classification problem）</strong>：预测一个离散的类别，对于输入的内容将其给出一个特定的分类。比如说，邮件分类、疾病预测，etc</p>          </div><ol start="4" type="1"><li><strong>优化器（optimizer）</strong>：优化器是神经网络中用来更新各个参数以最小化损失函数的算法，常见的方法有梯度下降以及伴随的各种衍生的算法,如图所示<img src="/RL3pictures/image-31.png" alt="alt text" /><img src="/RL3pictures/image-32.png" alt="alt text" /><img src="/RL3pictures/image-33.png" alt="alt text" /></li><li><strong>反向传播(back propagation)</strong>:反向传播是在确定了上面的损失函数和优化方法之后，对于整个神经网络进行更新的过程。 <div class="note note-primary">            <p><img src="/RL3pictures/image-35.png" alt="alt text" /> 以这个简单的例子为例，展示了多层神经网络中，如何利用每两层之间的函数关系与链式法则来计算最终的损失函数对于其中每一个神经元得到的梯度</p>          </div> 在反向传播的过程中，会从输出层向前计算出每一个参数对应的梯度，然后再根据优化器选择的方法依次更新这些参数 <div class="note note-info">            <p>以经典的<strong>手写数字识别（MNIST）</strong> 为例，来分析一下整个神经网络运作的流程： 为了解决这个问题，搭建一个简单的三层的神经网络： （1）输入层：共有28*28=784个神经元，对应每张图片的每一个像素点（灰度），取值在1~255之间，用于输入图片的信息</p><p>（2）隐藏层：隐藏层的神经元个数不定（是一个超参数），假设有128个神经元，那么每一个神经元都会有一系列的参数，接受输入层的784个输入，并且通过线性变换和偏置的叠加得到一个值，接着经过激活之后得到对应的128个输出</p><p>（3）输出层：由于识别的是0~9这些数字，因此输出层就设定为10个神经元，每个都接受隐藏层的128个输出，之后通过神经元内的计算、激活函数激活之后得到输出，每一个输出对应得到结果是相应数字的概率。</p><p>之后，神经网络的整个工作流程如下：</p><p>（0）首先，将所有的图片进行标注之后，分为训练组和测试组，将训练组的数据投喂给模型</p><p>（1）（大多情况下，对于输入的灰度值进行归一化，将每一个值除以255，使得输入的灰度值都在0~1之间）之后进入隐藏层线性计算后，选择激活函数Relu进行激活，得到128个输出（这里使用最简单的函数Relu引入了非线性的量 （2）一张图片进入输出层，同样是先线性计算，之后使用softmax函数得到十个概率值，即为测试得到的输出 （3）对于每一个样例，将得到的预测结果与标签结果相比较，计算损失，接着反向传播计算梯度并且根据优化方法更新参数，完成这个图片的训练 （4）重复步骤（2）和（3），直到所有图片都训练完成</p>          </div></li></ol><h3 id="深度学习rnn和cnn">1.2 深度学习————RNN和CNN</h3><h4 id="卷积神经网络">1.2.1 卷积神经网络</h4>]]></content>
+    <content type="html"><![CDATA[<h1 id="rl3-深度学习dqn">RL3: 深度学习&amp;DQN</h1><div class="note note-success">            <p>这个部分的笔记主要介绍一些深度学习的基础内容，以及其与强化学习结合的DQN方法的例子。由于深度学习不是这个部分的重点，就简单梳理一下框架，具体的各个算法和函数背后的原理就罗列一下，不去深入学习了（）</p>          </div><h2 id="深度学习基础">1. 深度学习基础</h2><h3 id="神经元神经网络神经网络训练">1.1 神经元&amp;神经网络，神经网络训练</h3><p>在神经网络中，“神经元”是其中最基本的组成单位，其基本结构如下所示：<img src="/RL3pictures/image-26.png" alt="alt text" /> 也就是说，输入了一系列有一定权重的量加上偏置值，然后经过激活函数，得到输出。有如下几个概念： （1）<strong>感知机（perceptron）</strong>：我理解感知机是一种单元的、初级的神经元（单元的网络），其包括了神经元的所有特性内容，但是最后的激活函数<span class="math inline"><em>f</em></span>一般是简单的<strong>符号函数</strong> ，即简单的对于内容的正负进行区分。 感知机只能用于处理简单的<strong>线性可分问题</strong> ，由于其激活函数的限制，只能生成一个二分数据的超平面。对于复杂一点的情况（比如<strong>xor</strong>问题），其就无法解决。 （2）<strong>激活函数</strong>：为了解决感知机无法解决的问题，现代神经网络采用了多种多样的激活函数，如图所示，用于不同的场景 <img src="/RL3pictures/image-27.png" alt="alt text" /> <img src="/RL3pictures/image-28.png" alt="alt text" /> 以上介绍了神经网络中神经元的基本结构，下面是一些更加深入的内容 （3）<strong>损失函数</strong>：损失函数是评估训练时神经网络输出的结果和真实值之间差距的函数，是用来衡量训练出的模型好坏的评估指标。根据问题的不同，分别选择不同的损失函数，如图所示 <img src="/RL3pictures/image-29.png" alt="alt text" /> <img src="/RL3pictures/image-30.png" alt="alt text" /></p><div class="note note-primary">            <p>神经网络的两个主要研究对象： <strong>回归问题（regression problem）</strong>：预测一个连续的数值输出，即根据输入的特征预测一个特定的数值。比如说，预测房价、温度，etc <strong>分类问题（classification problem）</strong>：预测一个离散的类别，对于输入的内容将其给出一个特定的分类。比如说，邮件分类、疾病预测，etc</p>          </div><ol start="4" type="1"><li><strong>优化器（optimizer）</strong>：优化器是神经网络中用来更新各个参数以最小化损失函数的算法，常见的方法有梯度下降以及伴随的各种衍生的算法,如图所示<img src="/RL3pictures/image-31.png" alt="alt text" /><img src="/RL3pictures/image-32.png" alt="alt text" /><img src="/RL3pictures/image-33.png" alt="alt text" /></li><li><strong>反向传播(back propagation)</strong>:反向传播是在确定了上面的损失函数和优化方法之后，对于整个神经网络进行更新的过程。 <div class="note note-primary">            <p><img src="/RL3pictures/image-35.png" alt="alt text" /> 以这个简单的例子为例，展示了多层神经网络中，如何利用每两层之间的函数关系与链式法则来计算最终的损失函数对于其中每一个神经元得到的梯度</p>          </div> 在反向传播的过程中，会从输出层向前计算出每一个参数对应的梯度，然后再根据优化器选择的方法依次更新这些参数 <div class="note note-info">            <p>以经典的<strong>手写数字识别（MNIST）</strong> 为例，来分析一下整个神经网络运作的流程： 为了解决这个问题，搭建一个简单的三层的神经网络： （1）输入层：共有28*28=784个神经元，对应每张图片的每一个像素点（灰度），取值在1~255之间，用于输入图片的信息</p><p>（2）隐藏层：隐藏层的神经元个数不定（是一个超参数），假设有128个神经元，那么每一个神经元都会有一系列的参数，接受输入层的784个输入，并且通过线性变换和偏置的叠加得到一个值，接着经过激活之后得到对应的128个输出</p><p>（3）输出层：由于识别的是0~9这些数字，因此输出层就设定为10个神经元，每个都接受隐藏层的128个输出，之后通过神经元内的计算、激活函数激活之后得到输出，每一个输出对应得到结果是相应数字的概率。</p><p>之后，神经网络的整个工作流程如下：</p><p>（0）首先，将所有的图片进行标注之后，分为训练组和测试组，将训练组的数据投喂给模型</p><p>（1）（大多情况下，对于输入的灰度值进行归一化，将每一个值除以255，使得输入的灰度值都在0~1之间）之后进入隐藏层线性计算后，选择激活函数Relu进行激活，得到128个输出（这里使用最简单的函数Relu引入了非线性的量 （2）一张图片进入输出层，同样是先线性计算，之后使用softmax函数得到十个概率值，即为测试得到的输出 （3）对于每一个样例，将得到的预测结果与标签结果相比较，计算损失，接着反向传播计算梯度并且根据优化方法更新参数，完成这个图片的训练 （4）重复步骤（2）和（3），直到所有图片都训练完成</p>          </div></li></ol><h3 id="深度学习rnn和cnn">1.2 深度学习————RNN和CNN</h3><h4 id="卷积神经网络">1.2.1 卷积神经网络</h4><h3 id="dqn">1.3 DQN</h3>]]></content>
     
     
     <categories>
