@@ -8,7 +8,7 @@
     <link href="/2025/09/07/%E8%AE%BA%E6%96%87-LSTM-A-Search-Space-Odyssey/"/>
     <url>/2025/09/07/%E8%AE%BA%E6%96%87-LSTM-A-Search-Space-Odyssey/</url>
     
-    <content type="html"><![CDATA[<h1 id="lstm-a-search-space-odyssey">LSTM: A Search Space Odyssey</h1><p><a href="/LSTM/LSTM%20A%20Search%20Space%20Odyssey.pdf">原论文pdf</a> 这是一篇关于LSTM的论文；Odyssey，引申意自《奥德赛》（吗？），意为“艰难的跋涉，漫长的旅程” ## （0）abstract <div class="note note-primary">            <p><strong>Learn some English</strong> 1. state-of-the-art: 目前最好的，最先进的 2. inception: 开端，创始 3. utility: 帮助，实用性 4. variants: 变体，变种</p>          </div> 从摘要中总结看出，所谓的LSTM（长短期记忆）是一种RNN结构的变体，主要解决了RNN中常出现的<strong>梯度爆炸</strong>的问题；这篇文章主要使用了<strong>随机搜索</strong>方法探索了最优的超参数设置，发现了现有的LSTM变体中，没有模型可以很显著提升当前的标准LSTM架构。 ## （1）Introduction <div class="note note-primary">            <p><strong>Learn some English</strong> 1. hurdle: 障碍，困难 2. plague: 困扰，折磨(做v.时的意思) 3. acoustic: 声学的 4. incorporate: 集成，包含</p>          </div> 其实主要内容于摘要很接近，稍微详细解释了一点，继续往下看</p><h2 id="vanilla-lstm">（2）VANILLA LSTM</h2><p>vanilla不仅仅是熟悉的“香草”意思，作形容词的时候还有“普通的，平淡无奇”之意！</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="lstm-a-search-space-odyssey">LSTM: A Search Space Odyssey</h1><p><a href="/LSTM/LSTM%20A%20Search%20Space%20Odyssey.pdf">原论文pdf</a> <a href="https://colah.github.io/posts/2015-08-Understanding-LSTMs/">spinning up的相关学习地址</a></p><p>这是一篇关于LSTM的论文；Odyssey，引申意自《奥德赛》（吗？），意为“艰难的跋涉，漫长的旅程”</p><h2 id="abstract">（0）abstract</h2><div class="note note-primary">            <p><strong>Learn some English</strong> 1. state-of-the-art: 目前最好的，最先进的 2. inception: 开端，创始 3. utility: 帮助，实用性 4. variants: 变体，变种</p>          </div><p>从摘要中总结看出，所谓的LSTM（长短期记忆）是一种RNN结构的变体，主要解决了RNN中常出现的<strong>梯度爆炸</strong>的问题；这篇文章主要使用了<strong>随机搜索</strong>方法探索了最优的超参数设置，发现了现有的LSTM变体中，没有模型可以很显著提升当前的标准LSTM架构。</p><h2 id="introduction">（1）Introduction</h2><div class="note note-primary">            <p><strong>Learn some English</strong> 1. hurdle: 障碍，困难 2. plague: 困扰，折磨(做v.时的意思) 3. acoustic: 声学的 4. incorporate: 集成，包含</p>          </div><p>其实主要内容于摘要很接近，稍微详细解释了一点，继续往下看</p><h2 id="vanilla-lstm">（2）VANILLA LSTM</h2><p>vanilla不仅仅是熟悉的“香草”意思，作形容词的时候还有“普通的，平淡无奇”之意！</p>]]></content>
     
     
     
@@ -171,7 +171,7 @@
     <link href="/2025/08/05/RL-notes/"/>
     <url>/2025/08/05/RL-notes/</url>
     
-    <content type="html"><![CDATA[<h1 id="about-rl">About RL</h1><p>暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。</p><h2 id="references">References</h2><p>1.王树森 深度强化学习<br />2. 多智能体强化学习短学期ppt</p><div class="note note-success">            <h3 id="目录">目录</h3><p><a href="/RL1：强化学习基本概念，马尔科夫决策过程，DP/"><u>RL1：强化学习基本概念，马尔科夫决策过程，DP</u></a></p><p><a href="/RL2：Value-estimation/"><u>RL2：Value estimation</u></a> <a href="/RL3：深度学习&amp;DQN/"><u>RL3：深度学习&amp;DQN</u></a></p>          </div>]]></content>
+    <content type="html"><![CDATA[<h1 id="about-rl">About RL</h1><p>暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。</p><h2 id="references">References</h2><p>1.王树森 深度强化学习<br />2. 多智能体强化学习短学期ppt</p><div class="note note-success">            <h3 id="目录">目录</h3><p><a href="/RL1：强化学习基本概念，马尔科夫决策过程，DP/"><u>RL1：强化学习基本概念，马尔科夫决策过程，DP</u></a> <a href="/RL2：Value-estimation/"><u>RL2：Value estimation</u></a> <a href="/RL3：深度学习&amp;DQN/"><u>RL3：深度学习&amp;DQN</u></a></p>          </div>]]></content>
     
     
     <categories>
