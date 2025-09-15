@@ -27,7 +27,7 @@
 <meta property="og:description" content="RL0： 基础数学知识 1.无偏估计 在统计学中，无偏估计指的是一个估计量的期望值等于其真实值，即 E[θ̂] &#x3D; θ 在强化学习的状态估计里面，无偏估计即为我们估计到的V(s)与其真实值相同的情况 2.梯度 recall：对于一个多元函数，其梯度是一个向量，为该函数对于每一个变量求偏导数的结果，即为 $\nabla f(x_1, x_2, \dots, x_n) &#x3D; \left( \fr">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-08-06T00:44:21.000Z">
-<meta property="article:modified_time" content="2025-09-07T11:57:42.307Z">
+<meta property="article:modified_time" content="2025-09-13T02:13:29.770Z">
 <meta property="article:author" content="zrw">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          136 字
+          228 字
         
       </span>
     
@@ -280,6 +280,8 @@
 <p>在统计学中，无偏估计指的是一个估计量的期望值等于其真实值，即 <strong><span class="math inline"><em>E</em>[<em>θ̂</em>] = <em>θ</em></span></strong> 在强化学习的状态估计里面，无偏估计即为我们估计到的<span class="math inline"><em>V</em>(<em>s</em>)</span>与其真实值相同的情况</p>
 <h2 id="梯度">2.梯度</h2>
 <p>recall：对于一个多元函数，其梯度是一个<strong>向量</strong>，为该函数对于每一个变量求偏导数的结果，即为 <span class="math inline">$\nabla f(x_1, x_2, \dots, x_n) = \left( \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \dots, \frac{\partial f}{\partial x_n} \right)$</span></p>
+<h2 id="悔值">3.悔值</h2>
+<p>对于一个强化学习进行的若干动作来说，其（累计）的悔值即为：<span class="math inline">$R(T) = \sum_{t=1}^{T} \left( \text{损失}(\text{最优动作}) - \text{损失}(\text{选择的动作}) \right)$</span> 也就是说，即为累计的你的决策和理想的最优动作的差距，也就是你在过程中犯的“错误”的累计。</p>
 
                 
               </div>

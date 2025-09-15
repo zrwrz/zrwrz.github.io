@@ -19,26 +19,32 @@
   <meta name="author" content="zrw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="RL4: 策略梯度和策略优化              首先介绍几个思想： （1）策略参数化：本质上来讲，一个策略是一个从一个特定的状态到一个动作的映射，而策略参数化则是指使用一个函数来表示一个策略，之后通过这个函数在训练的过程中不断调整来优化策略。比如说，我的参数化的策略可能是一个神经网络，根据不同的输入情况输出一系列动作执行的概率，在训练的过程中不断优化当前的方案。 策略参数化表示为 πθ(">
+    <meta name="description" content="RL4: 策略梯度和一些策略梯度算法              首先介绍几个思想： （1）策略参数化：本质上来讲，一个策略是一个从一个特定的状态到一个动作的映射，而策略参数化则是指使用一个函数来表示一个策略，之后通过这个函数在训练的过程中不断调整来优化策略。比如说，我的参数化的策略可能是一个神经网络，根据不同的输入情况输出一系列动作执行的概率，在训练的过程中不断优化当前的方案。 策略参数化表示为">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RL4：策略梯度和策略优化">
+<meta property="og:title" content="RL4：策略梯度和策略梯度算法">
 <meta property="og:url" content="http://example.com/2025/08/23/RL4/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="RL4: 策略梯度和策略优化              首先介绍几个思想： （1）策略参数化：本质上来讲，一个策略是一个从一个特定的状态到一个动作的映射，而策略参数化则是指使用一个函数来表示一个策略，之后通过这个函数在训练的过程中不断调整来优化策略。比如说，我的参数化的策略可能是一个神经网络，根据不同的输入情况输出一系列动作执行的概率，在训练的过程中不断优化当前的方案。 策略参数化表示为 πθ(">
+<meta property="og:description" content="RL4: 策略梯度和一些策略梯度算法              首先介绍几个思想： （1）策略参数化：本质上来讲，一个策略是一个从一个特定的状态到一个动作的映射，而策略参数化则是指使用一个函数来表示一个策略，之后通过这个函数在训练的过程中不断调整来优化策略。比如说，我的参数化的策略可能是一个神经网络，根据不同的输入情况输出一系列动作执行的概率，在训练的过程中不断优化当前的方案。 策略参数化表示为">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/RL4pictures/image-36.png">
 <meta property="og:image" content="http://example.com/RL4pictures/image-37.png">
 <meta property="og:image" content="http://example.com/RL4pictures/image-38.png">
 <meta property="og:image" content="http://example.com/RL4pictures/image-39.png">
+<meta property="og:image" content="http://example.com/RL4pictures/image-65.png">
+<meta property="og:image" content="http://example.com/RL4pictures/image-66.png">
+<meta property="og:image" content="http://example.com/RL4pictures/image-67.png">
+<meta property="og:image" content="http://example.com/RL4pictures/image-68.png">
+<meta property="og:image" content="http://example.com/RL4pictures/image-69.png">
 <meta property="article:published_time" content="2025-08-23T01:49:41.000Z">
-<meta property="article:modified_time" content="2025-09-02T12:16:07.218Z">
+<meta property="article:modified_time" content="2025-09-15T08:39:14.592Z">
 <meta property="article:author" content="zrw">
+<meta property="article:tag" content="强化学习，笔记，策略梯度，A2C">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/RL4pictures/image-36.png">
   
   
   
-  <title>RL4：策略梯度和策略优化 - Hexo</title>
+  <title>RL4：策略梯度和策略梯度算法 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="RL4：策略梯度和策略优化"></span>
+            <span id="subtitle" data-typed-text="RL4：策略梯度和策略梯度算法"></span>
           
         </div>
 
@@ -227,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          480 字
+          1.6k 字
         
       </span>
     
@@ -238,7 +244,7 @@
         
         
         
-          5 分钟
+          14 分钟
         
       </span>
     
@@ -275,17 +281,26 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">RL4：策略梯度和策略优化</h1>
+            <h1 id="seo-header">RL4：策略梯度和策略梯度算法</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="rl4-策略梯度和策略优化">RL4: 策略梯度和策略优化</h1>
+                <h1 id="rl4-策略梯度和一些策略梯度算法">RL4: 策略梯度和一些策略梯度算法</h1>
 <div class="note note-success">
             <p>首先介绍几个思想： （1）<strong>策略参数化</strong>：本质上来讲，一个策略是一个从一个特定的状态到一个动作的映射，而策略参数化则是指使用一个函数来表示一个策略，之后通过这个函数在训练的过程中不断调整来优化策略。比如说，我的参数化的策略可能是一个神经网络，根据不同的输入情况输出一系列动作执行的概率，在训练的过程中不断优化当前的方案。 策略参数化表示为 <span class="math inline"><em>π</em><sub><em>θ</em></sub>(<em>a</em>|<em>s</em>)</span>，其中<span class="math inline"><em>θ</em></span>即为用来调整优化策略的参数 （2）</p>
           </div>
 <h2 id="策略梯度介绍">1. 策略梯度介绍</h2>
-<p><img src="/RL4pictures/image-36.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 在之前的RL2中，用到的一些方法都是适用于表格形式的策略，其应用的场景多为状态-动作的数量比较小的情况；而在更多的情况下使用策略梯度是另外一种可行的方案，二者的核心区别为： <img src="/RL4pictures/image-37.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 对于表格型策略，由于对于每一个状态<span class="math inline"><em>s</em></span>其均最大化了<span class="math inline"><em>Q</em>(<em>s</em>, <em>a</em>)</span>，因此其一定是最优解；而根据参数化策略优化的就不一定了（可能是一个局部的最优解），二者的关系如下：<img src="/RL4pictures/image-38.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 总体来说，策略优化即为：寻找一个用于衡量策略的优劣的目标函数 <strong><span class="math inline"><em>J</em>(<em>θ</em>)</span></strong> ，然后借助目标函数优化。 因此，对于策略梯度，其关键点就在于以下的两点： （1）如何设计合适的目标函数？ （2）如何进行计算和优化？（设定合适的learning rate 计算梯度，etc.） ### 1.1 目标函数的选择 如图所示，一般有如下的几种选择目标函数的方式，根据不同的任务和算法需求，选取不同的目标函数：<img src="/RL4pictures/image-39.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<p><img src="/RL4pictures/image-36.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 在之前的RL2中，用到的一些方法都是适用于表格形式的策略，其应用的场景多为状态-动作的数量比较小的情况；而在更多的情况下使用策略梯度是另外一种可行的方案，二者的核心区别为： <img src="/RL4pictures/image-37.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 对于表格型策略，由于对于每一个状态<span class="math inline"><em>s</em></span>其均最大化了<span class="math inline"><em>Q</em>(<em>s</em>, <em>a</em>)</span>，因此其一定是最优解；而根据参数化策略优化的就不一定了（可能是一个局部的最优解），二者的关系如下：<img src="/RL4pictures/image-38.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 总体来说，策略优化即为：寻找一个用于衡量策略的优劣的目标函数 <strong><span class="math inline"><em>J</em>(<em>θ</em>)</span></strong> ，然后借助目标函数优化。 因此，对于策略梯度，其关键点就在于以下的两点： （1）如何设计合适的目标函数？ （2）如何进行计算和优化？（设定合适的learning rate 计算梯度，etc.） ### 1.1 目标函数的选择 如图所示，一般有如下的几种选择目标函数的方式，根据不同的任务和算法需求，选取不同的目标函数：<img src="/RL4pictures/image-39.png" srcset="/img/loading.gif" lazyload alt="alt text" /> <div class="note note-primary">
+            <p>这几个公式的意义： 1.即为再当前策略下每一个状态的期望价值的按照概率分布的加权求和 2.计算的相当于是整个系统的总奖励值，具体来说：的第二个求和代表的是给定一个状态，在当前策略下各个动作奖励的概率加权和，也就是代表每一个状态所取得的期望奖励；那么前一个求和就是在当前状态分布下每一个状态对应奖励的概率加权和，也就是整个系统的总奖励 3.这是相对于轨迹而言的计算方法，相当于我在当前的策略<span class="math inline"><em>θ</em></span>下，采样一个固定的时间T之后，对于每一个出现的状态-动作序列最终得到的奖励的加权和。<span class="math inline"><em>p</em><sub><em>θ</em></sub></span>即为出现这一串特定状态-动作的各个步骤概率的乘积。</p>
+          </div> <strong>可以感觉到，这三个基本都是价值函数的不同计算方法，因此更有的策略参数<span class="math inline"><em>θ</em></span>可以让这三个J应当更大。 具体解释一下几个概念： （1）</strong>状态分布<strong>：状态分布指的就是在当前的环境下，各个状态在整个系统中出现的概率分别是多少。对于一个陌生未知的环境<span class="math inline"><em>d</em><sub>0</sub>(<em>s</em>)</span>,其状态分布需要计算和估计，此时又有两种情况如下：<img src="/RL4pictures/image-65.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 具体解释：策略无关的状态分布指的是，在长时间的实验次数中，每个状态出现的概率与你采用的策略是无关的，因此可以采用这种比较简单的假设； 而当状态分布与策略有关的时候，采用的所谓</strong>稳态状态分布**指的是，在执行相当长时间后，我的各个状态的概率会不再发生明显变化。稳态状态公式也很好理解：求和的三项即为状态s下采用动作a可以转移到<span class="math inline"><em>s</em>′</span>的概率，乘以当前策略下状态s采取策略a的概率，最后再乘以状态s的分布概率。也就是说，把所有状态下可能转移到s’的情况的概率进行求和，即为s’的分布概率。</p>
+<h3 id="计算策略梯度">1.2 计算策略梯度</h3>
+<h4 id="平均轨迹回报目标的策略梯度">1.2.1 平均轨迹回报目标的策略梯度</h4>
+<p>首先来看一下计算轨迹对应的<span class="math inline"><em>J</em>(<em>θ</em>)</span>的策略梯度的方法：<img src="/RL4pictures/image-66.png" srcset="/img/loading.gif" lazyload alt="alt text" />这个计算看上去很复杂，首先明确几个事情： （1）<span class="math inline"><em>θ</em></span>是一个向量 （2）这里面用到了积分的形式，实际上可以这么理解：比如说你玩游戏，把每一个画面都看作一个状态，把向四面八方任何的移动都看成动作，那么动作和状态空间就是连续的，因此可以理解采集到的轨迹也是连续的，因此使用积分来计算总的reward （3）因此，现在的<span class="math inline"><em>p</em><sub><em>θ</em></sub>(<em>τ</em>)</span>是一个概率密度函数（关于<span class="math inline"><em>τ</em></span>），所有求积分即可 由于对于每一个轨迹，其reward<span class="math inline"><em>G</em>(<em>τ</em>)</span>是一个可以计算出的常数，本质上说是与参数<span class="math inline"><em>θ</em></span>无关的；这里注意到<span class="math inline"><em>p</em><sub><em>θ</em></sub>(<em>τ</em>)</span>是一个一系列概率连乘的形式，蓝色的部分就是创造出了一个对数形式的转换，结合链式法则，方便后续的操作。最后又将其写成了期望的形式。 进一步地对于这个梯度进行的展开如下：<img src="/RL4pictures/image-67.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<h4 id="平均价值回报和平均奖励回报的策略梯度">1.2.2 平均价值回报和平均奖励回报的策略梯度</h4>
+<p>如图所示<img src="/RL4pictures/image-68.png" srcset="/img/loading.gif" lazyload alt="alt text" />几点需要说明的是： （1）d(s)可以看作一个在训练过程中，不断优化的“常数”，也就是说随着训练过程会不断变化 （2）recall：<span class="math inline"><em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)</span>实际上就是一个奖励值，与具体的<span class="math inline"><em>θ</em></span>其实是无关的！ （3）最下面的<span class="math inline"><em>h</em><sub><em>θ</em></sub>(<em>s</em>, <em>a</em>)</span>指的是我的网络对于状态s下进行动作a的一个“打分”，所以使用softmax函数将其转化为正常的、易于理解的此时策略<span class="math inline"><em>θ</em></span>的采取这个行为的概率（也就是进行归一化处理） 到此为止，介绍了几种不同的策略梯度的计算方法，以此为基础延伸出了一系列近似方法和基于策略梯度的算法，核心来看就是下面的公式： <img src="/RL4pictures/image-69.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<h3 id="策略梯度算法">1.3 策略梯度算法</h3>
+<p>先欠着（）</p>
 
                 
               </div>
@@ -294,6 +309,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="category-chain-item">强化学习</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%EF%BC%8C%E7%AC%94%E8%AE%B0%EF%BC%8C%E7%AD%96%E7%95%A5%E6%A2%AF%E5%BA%A6%EF%BC%8CA2C/" class="print-no-link">#强化学习，笔记，策略梯度，A2C</a>
+      
+    </div>
   
 </div>
 
@@ -303,7 +346,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>RL4：策略梯度和策略优化</div>
+      <div>RL4：策略梯度和策略梯度算法</div>
       <div>http://example.com/2025/08/23/RL4/</div>
     </div>
     <div class="license-meta">
