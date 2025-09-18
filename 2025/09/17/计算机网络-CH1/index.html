@@ -19,23 +19,42 @@
   <meta name="author" content="zrw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="RL0： 基础数学知识 1.无偏估计 在统计学中，无偏估计指的是一个估计量的期望值等于其真实值，即 E[θ̂] &#x3D; θ 在强化学习的状态估计里面，无偏估计即为我们估计到的V(s)与其真实值相同的情况 2.梯度 recall：对于一个多元函数，其梯度是一个向量，为该函数对于每一个变量求偏导数的结果，即为 $\nabla f(x_1, x_2, \dots, x_n) &#x3D; \left( \fr">
+    <meta name="description" content="计算机网络 CH1：概述 1.2 因特网概述 1.2.1 网络，互联网与因特网  1. 网络：关注概念：连接的设备称为节点（node），连接设备的称为链路（link）；节点和链路组成的结构就是网络。 2. 互联网：网络与网络之间，一般通过路由器来连接；将一系列的网络连接起来，就形成互联网，如下图所示；互联网是“网络的网络”  3. 因特网（Internet）：因特网是世界上最大的互联网，连接">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RL0：基础数学知识">
-<meta property="og:url" content="http://example.com/2025/08/06/RL0/index.html">
+<meta property="og:title" content="计算机网络 CH1">
+<meta property="og:url" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="RL0： 基础数学知识 1.无偏估计 在统计学中，无偏估计指的是一个估计量的期望值等于其真实值，即 E[θ̂] &#x3D; θ 在强化学习的状态估计里面，无偏估计即为我们估计到的V(s)与其真实值相同的情况 2.梯度 recall：对于一个多元函数，其梯度是一个向量，为该函数对于每一个变量求偏导数的结果，即为 $\nabla f(x_1, x_2, \dots, x_n) &#x3D; \left( \fr">
+<meta property="og:description" content="计算机网络 CH1：概述 1.2 因特网概述 1.2.1 网络，互联网与因特网  1. 网络：关注概念：连接的设备称为节点（node），连接设备的称为链路（link）；节点和链路组成的结构就是网络。 2. 互联网：网络与网络之间，一般通过路由器来连接；将一系列的网络连接起来，就形成互联网，如下图所示；互联网是“网络的网络”  3. 因特网（Internet）：因特网是世界上最大的互联网，连接">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2025/08/06/RL0/image-77.png">
-<meta property="article:published_time" content="2025-08-06T00:44:21.000Z">
-<meta property="article:modified_time" content="2025-09-17T01:38:37.887Z">
+<meta property="og:image" content="http://example.com/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9Cpictures/image-79.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-80.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-81.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-82.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-83.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-84.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-85.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-86.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-87.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-88.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-89.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-91.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-92.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-93.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-94.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-95.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-96.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-97.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-98.png">
+<meta property="og:image" content="http://example.com/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/image-99.png">
+<meta property="article:published_time" content="2025-09-17T02:08:20.000Z">
+<meta property="article:modified_time" content="2025-09-18T03:47:54.148Z">
 <meta property="article:author" content="zrw">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2025/08/06/RL0/image-77.png">
+<meta name="twitter:image" content="http://example.com/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9Cpictures/image-79.png">
   
   
   
-  <title>RL0：基础数学知识 - Hexo</title>
+  <title>计算机网络 CH1 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +220,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="RL0：基础数学知识"></span>
+            <span id="subtitle" data-typed-text="计算机网络 CH1"></span>
           
         </div>
 
@@ -212,8 +231,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-06 08:44" pubdate>
-          2025年8月6日 早上
+        <time datetime="2025-09-17 10:08" pubdate>
+          2025年9月17日 上午
         </time>
       </span>
     
@@ -224,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          363 字
+          1.4k 字
         
       </span>
     
@@ -235,7 +254,7 @@
         
         
         
-          4 分钟
+          12 分钟
         
       </span>
     
@@ -272,20 +291,46 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">RL0：基础数学知识</h1>
+            <h1 id="seo-header">计算机网络 CH1</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="rl0-基础数学知识">RL0： 基础数学知识</h1>
-<h2 id="无偏估计">1.无偏估计</h2>
-<p>在统计学中，无偏估计指的是一个估计量的期望值等于其真实值，即 <strong><span class="math inline"><em>E</em>[<em>θ̂</em>] = <em>θ</em></span></strong> 在强化学习的状态估计里面，无偏估计即为我们估计到的<span class="math inline"><em>V</em>(<em>s</em>)</span>与其真实值相同的情况</p>
-<h2 id="梯度">2.梯度</h2>
-<p>recall：对于一个多元函数，其梯度是一个<strong>向量</strong>，为该函数对于每一个变量求偏导数的结果，即为 <span class="math inline">$\nabla f(x_1, x_2, \dots, x_n) = \left( \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \dots, \frac{\partial f}{\partial x_n} \right)$</span></p>
-<h2 id="悔值">3.悔值</h2>
-<p>对于一个强化学习进行的若干动作来说，其（累计）的悔值即为：<span class="math inline">$R(T) = \sum_{t=1}^{T} \left( \text{损失}(\text{最优动作}) - \text{损失}(\text{选择的动作}) \right)$</span> 也就是说，即为累计的你的决策和理想的最优动作的差距，也就是你在过程中犯的“错误”的累计</p>
-<h2 id="对数极大似然估计">4.（对数）极大似然估计：</h2>
-<p>首先回忆一下<strong>极大似然估计（MLE）</strong>：<img src="image-77.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 也就是说，对于某个与参数组合<span class="math inline"><em>θ</em></span>有关的概率分布，采样到了一组数值<span class="math inline"><em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub></span>，那么，我们的目标是找到使得观测到这组<span class="math inline"><em>x</em><sub><em>i</em></sub></span>的概率最大的参数<span class="math inline"><em>θ</em></span>，也就是说确定观测到这组数据最合理的参数<span class="math inline"><em>θ</em></span>。对数极大似然估计也就是在碰到连乘的形式的时候，将其转化为对数方便求导计算</p>
+                <h1 id="计算机网络-ch1概述">计算机网络 CH1：概述</h1>
+<h2 id="因特网概述">1.2 因特网概述</h2>
+<h3 id="网络互联网与因特网">1.2.1 网络，互联网与因特网</h3>
+<p><img src="/计算机网络pictures/image-79.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 1. <strong>网络</strong>：关注概念：连接的设备称为<strong>节点（node）</strong>，连接设备的称为<strong>链路（link）</strong>；节点和链路组成的结构就是网络。 2. <strong>互联网</strong>：网络与网络之间，一般通过<strong>路由器</strong>来连接；将一系列的网络连接起来，就形成<strong>互联网</strong>，如下图所示；互联网是“网络的网络” <img src="image-80.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 3. <strong>因特网（Internet）</strong>：因特网是世界上最大的互联网，连接到因特网的设备称为<strong>主机（host）</strong>，如图所示<img src="image-81.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 4. 互联网与因特网的对比：<img src="image-82.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 5. <strong>协议</strong>：先理解为是一种网络设备之间通讯所遵守的一系列的规则与约定（比如说，规定了数据传输的格式和结构，传输的规则，建立和关闭连接的形式，etc.） ### 1.2.2 因特网简介 1. <strong>因特网服务提供者（Internet Service Provider，ISP）</strong> 普通用户与ISP（付费）签约，以使用互联网；ISP是为用户提供接入互联网服务的组织；由于互联网的结构复杂，因此需要ISP帮助个人用户连接。 目前为止，因特网已经发展为<strong>基于ISP的多层次结构的互联网络</strong> <img src="image-83.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 2. <strong>因特网的标准化工作</strong>：因特网的标准化工作是面向大众的，对于互联网标准提出的建议标注称为<strong>RFC</strong>，后续需要进一步评估才可能有效、被采纳 3. <strong>因特网的组成</strong>：如图所示：<img src="image-84.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<h2 id="电路交换分组交换和报文交换">1.3 电路交换，分组交换和报文交换</h2>
+<h3 id="电路交换">1.3.1 电路交换</h3>
+<p>电路交换是指在通信双方进行通信之前，首先在通信网络中为其建立一条专用的通信路径（电路），该路径在通信过程中一直保持，直到通信结束后才释放。这种方式常见于传统的电话网络中。用图表述如下：<img src="image-85.png" srcset="/img/loading.gif" lazyload alt="alt text" /> <div class="note note-danger">
+            <p>电路交换是显然不适用于计算机交互的；比如说，使用微信和别人发消息，很可能是很长时间之发一两条消息，但如果你电路交换一直占着线路，但可能大部分时候网络实际上是空闲的，这很容易导致大量的资源的浪费；这是由于计算机信息的交换一般具有<strong>突发性</strong></p>
+          </div></p>
+<h3 id="分组交换">1.3.2 分组交换</h3>
+<p>分组交换的基本结构如下图：<img src="image-86.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 假如说我H1与H3要进行传输文件，这个时候我们先将信息（的0/1编码）分成很多等长的message，分组完之后如下所示：<img src="image-87.png" srcset="/img/loading.gif" lazyload alt="alt text" />其中，<strong>“首部”</strong> 记录信息的寄件人和收件人；信息传输完成后，在收件人处删除掉首部，重新组装信息。 收件Host和寄件Host之间通过一系列路由器（R）进行存储转发，路由器会先存储信息，然后转发给下一个路由器。分组交换的优缺点如下所示：<img src="image-88.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<h3 id="报文交换">1.3.3 报文交换</h3>
+<p>报文交换是分组交换的前身，区别就是报文交换是整个地发送，而不是分组发送；路由器会将文件整个接受后才会存储转发。 因此，很显然报文交换带来的转发时延和需求的存储空间都会大很多。</p>
+<p>总结一下这部分的内容如下：<img src="image-89.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<h2 id="计算机网络的定义和分类">1.4 计算机网络的定义和分类</h2>
+<h3 id="计算机网络的定义">1.4.1 计算机网络的定义</h3>
+<p>在不同的时期，计算机网络有不同的定义；现阶段来说，较好的定义是<strong>计算机网络主要是由一些通用的、可编程的硬件互连而成的</strong>，而这些硬件都可以用来传输多种类型的数据，支持广泛的应用。 ## 1.4.2 计算机网络的分类 （1）按照交换方式：电路交换、报文交换、分组交换 （2）按照使用者：公用网和专用网（e.g. 军队、铁路、银行,etc.） （3）按照传输介质：有线网和无线网 （4）按照覆盖范围：如下<img src="image-91.png" srcset="/img/loading.gif" lazyload alt="alt text" /> （5）按照拓扑结构：有总线型、网状型、环形、星形，etc.</p>
+<h2 id="计算机网络的性能指标">1.5 计算机网络的性能指标</h2>
+<ol type="1">
+<li><strong>速率</strong>：速率就是指每秒可以传输多少个比特，也称为数据率（data rate）或者是比特率（bit rate）。 <div class="note note-primary">
+            <p>小写的b表示bit，大写的B表示byte。</p>
+          </div></li>
+</ol>
+<div class="note note-warning">
+            <p>有一个很恶心的东西，K M B T四个量在表示数据量和速率的时候代表的含义不同，如图所示：<img src="image-92.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 也就是说，数据量是采用二进制的2的次方，速率是一般的10的次方。参见下面的例题：<img src="image-93.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+          </div>
+<ol start="2" type="1">
+<li><strong>带宽(bandwidth)</strong>: 在模拟信号和计算机网络中有不同的定义，如图所示：<img src="image-94.png" srcset="/img/loading.gif" lazyload alt="alt text" />关键词：最大 在数据传输的过程中，有如下的木桶效应：<img src="image-95.png" srcset="/img/loading.gif" lazyload alt="alt text" /></li>
+<li><strong>吞吐量(throughput)</strong>: 吞吐量是指<strong>在单位时间内通过某个网络或接口的实际数据量</strong>，如图所示为通过线路带宽的吞吐量<img src="image-96.png" srcset="/img/loading.gif" lazyload alt="alt text" /></li>
+<li><strong>时延(latency)</strong>:时延是指数据从网络的一端传送到另一端所耗费的时间,在传输过程中各个部分的时延和计算方式如下图所示：<img src="image-97.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 电脑、路由器发射数据都会产生发送时延，在线路上会产生传播时延，路由器处理的时候会产生排队时延和处理时延 <div class="note note-warning">
+            <p>要记住在光纤中的信号传播速度</p>
+          </div> 用一张图来示意这个部分：<img src="image-98.png" srcset="/img/loading.gif" lazyload alt="alt text" />一般来说，结构是这样的（忽略了中间的排队时延和处理时延） <div class="note note-example">
+            <p>一个例题：<img src="image-99.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+          </div></li>
+</ol>
 
                 
               </div>
@@ -293,27 +338,6 @@
             <hr/>
             <div>
               <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="category-chain-item">强化学习</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
   
   
 </div>
@@ -324,8 +348,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>RL0：基础数学知识</div>
-      <div>http://example.com/2025/08/06/RL0/</div>
+      <div>计算机网络 CH1</div>
+      <div>http://example.com/2025/09/17/计算机网络-CH1/</div>
     </div>
     <div class="license-meta">
       
@@ -337,7 +361,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月6日</div>
+          <div>2025年9月17日</div>
         </div>
       
       
@@ -369,18 +393,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/07/RL2/" title="RL2：Value estimation">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">RL2：Value estimation</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/RL1%EF%BC%9A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B%EF%BC%8CDP/" title="RL1：强化学习基本概念，马尔科夫决策过程，DP">
-                        <span class="hidden-mobile">RL1：强化学习基本概念，马尔科夫决策过程，DP</span>
+                      <a href="/2025/09/16/OS-CH1-introduction/" title="OS CH1:introduction">
+                        <span class="hidden-mobile">OS CH1:introduction</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

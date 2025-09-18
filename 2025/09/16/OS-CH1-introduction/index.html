@@ -19,23 +19,25 @@
   <meta name="author" content="zrw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="RL0： 基础数学知识 1.无偏估计 在统计学中，无偏估计指的是一个估计量的期望值等于其真实值，即 E[θ̂] &#x3D; θ 在强化学习的状态估计里面，无偏估计即为我们估计到的V(s)与其真实值相同的情况 2.梯度 recall：对于一个多元函数，其梯度是一个向量，为该函数对于每一个变量求偏导数的结果，即为 $\nabla f(x_1, x_2, \dots, x_n) &#x3D; \left( \fr">
+    <meta name="description" content="OS CH1:introduction 1.0 LINUX概述  ### 1.0.1 什么是linux？ 1.1 操作系统是做什么的？ 操作系统是一个介于计算机hardware和user之间的“中介”。              这里的user并非一定是“人”，也可以是“软件”，连接到主机的笔记本，etc.            操作系统有这些作用： 从架构的角度来看： 从计算机系统组成">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RL0：基础数学知识">
-<meta property="og:url" content="http://example.com/2025/08/06/RL0/index.html">
+<meta property="og:title" content="OS CH1:introduction">
+<meta property="og:url" content="http://example.com/2025/09/16/OS-CH1-introduction/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="RL0： 基础数学知识 1.无偏估计 在统计学中，无偏估计指的是一个估计量的期望值等于其真实值，即 E[θ̂] &#x3D; θ 在强化学习的状态估计里面，无偏估计即为我们估计到的V(s)与其真实值相同的情况 2.梯度 recall：对于一个多元函数，其梯度是一个向量，为该函数对于每一个变量求偏导数的结果，即为 $\nabla f(x_1, x_2, \dots, x_n) &#x3D; \left( \fr">
+<meta property="og:description" content="OS CH1:introduction 1.0 LINUX概述  ### 1.0.1 什么是linux？ 1.1 操作系统是做什么的？ 操作系统是一个介于计算机hardware和user之间的“中介”。              这里的user并非一定是“人”，也可以是“软件”，连接到主机的笔记本，etc.            操作系统有这些作用： 从架构的角度来看： 从计算机系统组成">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2025/08/06/RL0/image-77.png">
-<meta property="article:published_time" content="2025-08-06T00:44:21.000Z">
-<meta property="article:modified_time" content="2025-09-17T01:38:37.887Z">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-75.png">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-73.png">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-74.png">
+<meta property="article:published_time" content="2025-09-16T06:51:03.000Z">
+<meta property="article:modified_time" content="2025-09-16T08:17:44.227Z">
 <meta property="article:author" content="zrw">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2025/08/06/RL0/image-77.png">
+<meta name="twitter:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-75.png">
   
   
   
-  <title>RL0：基础数学知识 - Hexo</title>
+  <title>OS CH1:introduction - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -201,7 +203,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="RL0：基础数学知识"></span>
+            <span id="subtitle" data-typed-text="OS CH1:introduction"></span>
           
         </div>
 
@@ -212,8 +214,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-08-06 08:44" pubdate>
-          2025年8月6日 早上
+        <time datetime="2025-09-16 14:51" pubdate>
+          2025年9月16日 下午
         </time>
       </span>
     
@@ -224,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          363 字
+          240 字
         
       </span>
     
@@ -235,7 +237,7 @@
         
         
         
-          4 分钟
+          3 分钟
         
       </span>
     
@@ -272,20 +274,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">RL0：基础数学知识</h1>
+            <h1 id="seo-header">OS CH1:introduction</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="rl0-基础数学知识">RL0： 基础数学知识</h1>
-<h2 id="无偏估计">1.无偏估计</h2>
-<p>在统计学中，无偏估计指的是一个估计量的期望值等于其真实值，即 <strong><span class="math inline"><em>E</em>[<em>θ̂</em>] = <em>θ</em></span></strong> 在强化学习的状态估计里面，无偏估计即为我们估计到的<span class="math inline"><em>V</em>(<em>s</em>)</span>与其真实值相同的情况</p>
-<h2 id="梯度">2.梯度</h2>
-<p>recall：对于一个多元函数，其梯度是一个<strong>向量</strong>，为该函数对于每一个变量求偏导数的结果，即为 <span class="math inline">$\nabla f(x_1, x_2, \dots, x_n) = \left( \frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, \dots, \frac{\partial f}{\partial x_n} \right)$</span></p>
-<h2 id="悔值">3.悔值</h2>
-<p>对于一个强化学习进行的若干动作来说，其（累计）的悔值即为：<span class="math inline">$R(T) = \sum_{t=1}^{T} \left( \text{损失}(\text{最优动作}) - \text{损失}(\text{选择的动作}) \right)$</span> 也就是说，即为累计的你的决策和理想的最优动作的差距，也就是你在过程中犯的“错误”的累计</p>
-<h2 id="对数极大似然估计">4.（对数）极大似然估计：</h2>
-<p>首先回忆一下<strong>极大似然估计（MLE）</strong>：<img src="image-77.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 也就是说，对于某个与参数组合<span class="math inline"><em>θ</em></span>有关的概率分布，采样到了一组数值<span class="math inline"><em>x</em><sub>1</sub>, <em>x</em><sub>2</sub>, …, <em>x</em><sub><em>n</em></sub></span>，那么，我们的目标是找到使得观测到这组<span class="math inline"><em>x</em><sub><em>i</em></sub></span>的概率最大的参数<span class="math inline"><em>θ</em></span>，也就是说确定观测到这组数据最合理的参数<span class="math inline"><em>θ</em></span>。对数极大似然估计也就是在碰到连乘的形式的时候，将其转化为对数方便求导计算</p>
+                <h1 id="os-ch1introduction">OS CH1:introduction</h1>
+<h2 id="linux概述">1.0 LINUX概述</h2>
+<p><img src="image-75.png" srcset="/img/loading.gif" lazyload alt="alt text" /> ### 1.0.1 什么是linux？</p>
+<h2 id="操作系统是做什么的">1.1 操作系统是做什么的？</h2>
+<p>操作系统是一个<strong>介于计算机hardware和user之间的“中介”</strong>。 <div class="note note-primary">
+            <p>这里的user并非一定是“人”，也可以是“软件”，连接到主机的笔记本，etc.</p>
+          </div> 操作系统有这些作用：<img src="image-73.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 从架构的角度来看：<img src="image-74.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 从计算机系统组成的角度看（软硬件）：操作系统是<strong>系统软件</strong> 从用户的角度看：操作系统是硬件和用户的接口，其提供了<strong>命令级接口</strong>（e.g. 鼠标，触摸屏，键盘，etc.）与<strong>程序级接口</strong>（操作系统给一系列程序提供调用的接口，也就是程序通过操作系统才可以接触、调用底层硬件的东西） 从系统的角度来看：操作系统是计算机系统资源的管理者（管理各种乱七八糟的硬件）</p>
+<h2 id="计算机系统的组成">1.2 计算机系统的组成</h2>
 
                 
               </div>
@@ -304,7 +305,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/" class="category-chain-item">强化学习</a>
+  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="category-chain-item">操作系统</a>
   
   
 
@@ -324,8 +325,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>RL0：基础数学知识</div>
-      <div>http://example.com/2025/08/06/RL0/</div>
+      <div>OS CH1:introduction</div>
+      <div>http://example.com/2025/09/16/OS-CH1-introduction/</div>
     </div>
     <div class="license-meta">
       
@@ -337,7 +338,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年8月6日</div>
+          <div>2025年9月16日</div>
         </div>
       
       
@@ -369,9 +370,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/08/07/RL2/" title="RL2：Value estimation">
+                      <a href="/2025/09/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-CH1/" title="计算机网络 CH1">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">RL2：Value estimation</span>
+                        <span class="hidden-mobile">计算机网络 CH1</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -379,8 +380,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/RL1%EF%BC%9A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%EF%BC%8C%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B%EF%BC%8CDP/" title="RL1：强化学习基本概念，马尔科夫决策过程，DP">
-                        <span class="hidden-mobile">RL1：强化学习基本概念，马尔科夫决策过程，DP</span>
+                      <a href="/2025/09/16/os/" title="os">
+                        <span class="hidden-mobile">os</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

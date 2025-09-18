@@ -26,12 +26,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="About RL 暂定用来记录一些之前的笔记和后面自学的强化学习相关的内容。 References 1.王树森 深度强化学习 2. 多智能体强化学习短学期ppt 3. Spinning Up（这是有用的学习资料）              目录RL1：强化学习基本概念，马尔科夫决策过程，DP RL2：Value estimation RL3：深度学习&amp;DQN RL4：策略梯度和">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/08/05/RL-notes/image-76.png">
 <meta property="article:published_time" content="2025-08-05T01:45:17.000Z">
-<meta property="article:modified_time" content="2025-09-15T08:36:52.405Z">
+<meta property="article:modified_time" content="2025-09-18T03:48:07.616Z">
 <meta property="article:author" content="zrw">
 <meta property="article:tag" content="强化学习">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2025/08/05/RL-notes/image-76.png">
   
   
   
@@ -224,7 +226,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          377 字
+          391 字
         
       </span>
     
@@ -285,7 +287,7 @@
 <div class="note note-success">
             <h3 id="目录">目录</h3><p><a href="/RL1：强化学习基本概念，马尔科夫决策过程，DP/"><u>RL1：强化学习基本概念，马尔科夫决策过程，DP</u></a> <a href="/RL2：Value-estimation/"><u>RL2：Value estimation</u></a> <a href="/RL3：深度学习&amp;DQN/"><u>RL3：深度学习&amp;DQN</u></a> <a href="/RL4：策略梯度和策略优化/"><u>RL4：策略梯度和策略优化</u></a></p>
           </div>
-<p>对于整个RL的结构总结一下：我们强化学习的最终目标是要求出一个agent采取的最优策略，那么有两个大方向：<strong>优化价值函数</strong>和<strong>优化策略</strong>。优化价值函数相当于我们先找到在每一个状态下进行什么样的动作可以取得最好的奖励<span class="math inline"><em>Q</em><sup>*</sup></span>，接着让我们的智能体贪心地向着这个目标前进就可以了。因此，基于价值函数的方法一般得到的都是<strong>确定性的策略</strong>，即使偶尔采用<span class="math inline"><em>ϵ</em> − <em>g</em><em>r</em><em>e</em><em>e</em><em>d</em><em>y</em></span>方法，但大方向就是得到确定性的策略。 然而，在现实中面临更复杂的问题时，我们往往需要的是随机策略；同时，对于动作空间和状态空间非离散的情况，此时采用之前的迭代得到最大价值的方法也行不通了，此时解决这类问题就需要<strong>基于策略梯度</strong>的方法了。两种路径各有各的优点，需要结合具体的问题进行分析。</p>
+<p>对于整个RL的结构总结一下：我们强化学习的最终目标是要求出一个agent采取的最优策略，那么有两个大方向：<strong>优化价值函数</strong>和<strong>优化策略</strong>。优化价值函数相当于我们先找到在每一个状态下进行什么样的动作可以取得最好的奖励<span class="math inline"><em>Q</em><sup>*</sup></span>，接着让我们的智能体贪心地向着这个目标前进就可以了。因此，基于价值函数的方法一般得到的都是<strong>确定性的策略</strong>，即使偶尔采用<span class="math inline"><em>ϵ</em> − <em>g</em><em>r</em><em>e</em><em>e</em><em>d</em><em>y</em></span>方法，但大方向就是得到确定性的策略。 然而，在现实中面临更复杂的问题时，我们往往需要的是随机策略；同时，对于动作空间和状态空间非离散的情况，此时采用之前的迭代得到最大价值的方法也行不通了，此时解决这类问题就需要<strong>基于策略梯度</strong>的方法了。两种路径各有各的优点，需要结合具体的问题进行分析。 这样的关系，可以简单用下图总结：<img src="image-76.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
 
                 
               </div>
