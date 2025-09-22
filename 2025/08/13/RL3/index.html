@@ -39,8 +39,11 @@
 <meta property="og:image" content="http://example.com/RL3pictures/image-52.png">
 <meta property="og:image" content="http://example.com/2025/08/13/RL3/image-54.png">
 <meta property="og:image" content="http://example.com/RL3pictures/image-53.png">
+<meta property="og:image" content="http://example.com/2025/08/13/RL3/image-61.png">
+<meta property="og:image" content="http://example.com/2025/08/13/RL3/image-63.png">
+<meta property="og:image" content="http://example.com/2025/08/13/RL3/image-64.png">
 <meta property="article:published_time" content="2025-08-13T00:27:23.000Z">
-<meta property="article:modified_time" content="2025-09-09T06:55:27.167Z">
+<meta property="article:modified_time" content="2025-09-22T06:50:56.468Z">
 <meta property="article:author" content="zrw">
 <meta property="article:tag" content="强化学习，笔记，深度学习，DQN，神经网络">
 <meta name="twitter:card" content="summary_large_image">
@@ -237,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          2.4k 字
         
       </span>
     
@@ -248,7 +251,7 @@
         
         
         
-          16 分钟
+          21 分钟
         
       </span>
     
@@ -314,7 +317,20 @@
           </div> 但是，传统的RNN往往会伴随着梯度爆炸等等的问题，因此大部分RNN取得的相关成果都于LSTM有关。 <div class="note note-warning">
             <p>在使用RNN的时候，一个经常出现的问题就是如果相关的内容与你现在需要预测的内容距离差的很远，就会出现失效；比如说，预测一个句子的上下文，如果相关信息就在当前的这句话内，则RNN可以预测成功；然而，如果提供线索的上文距离比较远，RNN便会失效。但是，使用LSTM就不会出现这个问题！ 有关LSTM的内容，可以参考<a href="LSTM%20A%20Search%20Space%20Odyssey.md">论文：LSTM: A Search Space Odyssey</a></p>
           </div></p>
-<h3 id="dqn">1.3 DQN</h3>
+<h2 id="dqn">2. DQN</h2>
+<h3 id="问题的引入探索与利用">2.1 问题的引入：探索与利用</h3>
+<div class="note note-danger">
+            <p>比如说今晚你要到外面吃饭，那么究竟是选择自己经常去的那家还可以的饭店（“利用”）还是去边上的那家新开的饭店（“探索”）就体现了探索与利用之间的制衡关系；在强化学习中，当环境信息不完全时，即使是你对于现有状态的价值判断也可能因为样本太小而具有偶然性和不确定性， 已被探索过的行为可能因为偶然概率原因被高估或者低估。</p>
+          </div>
+<p>因此，在这样的背景下，什么是所谓的“最优”，如何平衡探索与利用的关系，既不轻易陷入局部最优，也不盲目探索，是需要关注的问题</p>
+<h3 id="一些简单的模型方法">2.2 一些简单的模型&amp;方法</h3>
+<h4 id="multi-arm-bandit-多臂老虎机">2.2.1 Multi-arm Bandit （多臂老虎机）</h4>
+<p>问题背景：假如你在一个赌场，面对一排老虎机（每一台都有预设的且未知的奖励分布），对于手上的有限筹码，应该如何做出抉择？ 一个所谓的“伯努利MAB问题”的定义如下： <img src="image-61.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 显然，其目的就是最大化累计奖励<span class="math inline">$\sum_{t=1}^T r_t$</span>. 我们可以将MAB问题的最大化累计奖励转化为最小化累计悔值，我们用<span class="math inline"><em>θ</em><sup>*</sup></span>代表所有老虎机中获得奖励概率最大的哪一个，那么每一次得到悔值转化为<span class="math inline"><em>θ</em><sup>*</sup> − <em>Q</em>(<em>a</em><sub><em>t</em></sub>)</span>，对其求和即可。</p>
+<h4 id="epsilon-greedy算法">2.2.2 <span class="math inline"><em>ϵ</em></span>-greedy算法</h4>
+<p>一种常用的策略是<span class="math inline"><em>ϵ</em></span>-greedy，前面也出现过，即为大多数时间（1-<span class="math inline"><em>ϵ</em></span>）选择当前已经探索过的最优策略，而剩下的<span class="math inline"><em>ϵ</em></span>时间随机选择一个策略。 对于每一个策略的价值，用下面的方法来计算：<img src="image-63.png" srcset="/img/loading.gif" lazyload alt="alt text" />，其实就是对于某一个行为总的奖励除以总的执行次数。 <div class="note note-primary">
+            <p><img src="image-64.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 这很好理解，因为最优的是固定的，如果<span class="math inline"><em>ϵ</em></span>固定，那个涉及到<span class="math inline"><em>ϵ</em></span>每一项的悔值前面的系数都是一定的，因此为线性；因此，一个自然的想法就是，随着我们不断尝试探索，现有的探索过的最优策略应该越来越“正确”，因此随着时间的推移，<span class="math inline"><em>ϵ</em></span>应该越来越小。</p>
+          </div></p>
+<h3 id="深度q学习">2.3 深度Q学习</h3>
 
                 
               </div>
