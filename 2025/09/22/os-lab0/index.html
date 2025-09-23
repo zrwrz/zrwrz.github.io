@@ -19,17 +19,20 @@
   <meta name="author" content="zrw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="os lab0 记录一些lab中需要掌握的东西 1.有关makefile和make  makefile文件是一个自动化构建和管理项目的脚本，相当于将一系列的编程语言项目编译成了可以让make命令使用的内容；之后，当你运行make命令时，其就会自动执行makefile文件中的指令和规则。 2.交叉编译工具链  这里面所谓的“套件”指的是一组相关的开发工具、软件和库，可以提供一个完整的功能集">
+    <meta name="description" content="os lab0 记录一些lab中需要掌握的东西 1.有关makefile和make  makefile文件是一个自动化构建和管理项目的脚本，相当于将一系列的编程语言项目编译成了可以让make命令使用的内容；之后，当你运行make命令时，其就会自动执行makefile文件中的指令和规则。 4.1 交叉编译工具链  这里面所谓的“套件”指的是一组相关的开发工具、软件和库，可以提供一个完整的功">
 <meta property="og:type" content="article">
 <meta property="og:title" content="os lab0">
 <meta property="og:url" content="http://example.com/2025/09/22/os-lab0/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="os lab0 记录一些lab中需要掌握的东西 1.有关makefile和make  makefile文件是一个自动化构建和管理项目的脚本，相当于将一系列的编程语言项目编译成了可以让make命令使用的内容；之后，当你运行make命令时，其就会自动执行makefile文件中的指令和规则。 2.交叉编译工具链  这里面所谓的“套件”指的是一组相关的开发工具、软件和库，可以提供一个完整的功能集">
+<meta property="og:description" content="os lab0 记录一些lab中需要掌握的东西 1.有关makefile和make  makefile文件是一个自动化构建和管理项目的脚本，相当于将一系列的编程语言项目编译成了可以让make命令使用的内容；之后，当你运行make命令时，其就会自动执行makefile文件中的指令和规则。 4.1 交叉编译工具链  这里面所谓的“套件”指的是一组相关的开发工具、软件和库，可以提供一个完整的功">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2025/09/22/os-lab0/image-126.png">
 <meta property="og:image" content="http://example.com/2025/09/22/os-lab0/image-127.png">
+<meta property="og:image" content="http://example.com/2025/09/22/os-lab0/image-150.png">
+<meta property="og:image" content="http://example.com/2025/09/22/os-lab0/image-151.png">
+<meta property="og:image" content="http://example.com/2025/09/22/os-lab0/image-152.png">
 <meta property="article:published_time" content="2025-09-22T00:52:31.000Z">
-<meta property="article:modified_time" content="2025-09-22T06:50:53.552Z">
+<meta property="article:modified_time" content="2025-09-23T04:49:06.510Z">
 <meta property="article:author" content="zrw">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2025/09/22/os-lab0/image-126.png">
@@ -225,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          266 字
+          711 字
         
       </span>
     
@@ -236,7 +239,7 @@
         
         
         
-          3 分钟
+          6 分钟
         
       </span>
     
@@ -282,11 +285,30 @@
 <p>记录一些lab中需要掌握的东西</p>
 <h2 id="有关makefile和make">1.有关makefile和make</h2>
 <p><img src="image-126.png" srcset="/img/loading.gif" lazyload alt="alt text" /> makefile文件是一个自动化构建和管理项目的脚本，相当于将一系列的编程语言项目编译成了可以让make命令使用的内容；之后，当你运行make命令时，其就会自动执行makefile文件中的指令和规则。</p>
-<h2 id="交叉编译工具链">2.交叉编译工具链</h2>
+<h2 id="交叉编译工具链">4.1 交叉编译工具链</h2>
 <p><img src="image-127.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 这里面所谓的“套件”指的是一组相关的开发工具、软件和库，可以提供一个完整的功能集合；整个<strong>交叉工具编译链</strong> 的作用是使用 <strong>目标套件下的编译器</strong> 将源代码编译为 <strong>对应系统</strong> 下的 <strong>目标架构</strong>语法下的可执行文件。</p>
-<p>执行以下任务时，对应的命令如下（我的文件名为helloworld.c）： (1) 生成对应的RISC-V汇编代码： <div class="note note-info">
+<p>执行以下任务时，对应的命令如下（我的文件名为helloworld.c）：</p>
+<ol type="1">
+<li>生成对应的RISC-V汇编代码： <div class="note note-info">
             <p>riscv64-linux-gnu-gcc -S helloworld.c -o helloworld.s</p>
-          </div> 解释一下：-S告诉编译器停止在汇编阶段即可；而后面的.s文件就是生成的对应的汇编文件。</p>
+          </div> 解释一下：-S告诉编译器停止在汇编阶段即可；而后面的.s文件就是生成的对应的汇编文件。</li>
+</ol>
+<p>（2）将其编译为 RISC-V 可执行程序：</p>
+<div class="note note-info">
+            <p>riscv64-linux-gnu-gcc -c helloworld.c -o helloworld.o riscv64-linux-gnu-gcc helloworld.o -o helloworld</p>
+          </div>
+<p>这两个代码的意思是，首先转化为编译后的目标文件（.o文件），-o的意思是指定生成文件的名字（仅此而已）；之后通过这个.o文件和可能依赖的库文件等等链接起来解释，就生成了可执行文件</p>
+<p>（3）将 RISC-V 可执行程序反汇编 <div class="note note-info">
+            <p>riscv64-linux-gnu-objdump -d helloworld &gt; helloworld.txt</p>
+          </div> 三个步骤中，前两个使用了riscv64-linux-gnu下的gcc编译器，最后一个使用了objdump进行反汇编</p>
+<h2 id="编译本地架构内核">4.2 编译本地架构内核</h2>
+<p>需要掌握的内容： <img src="image-150.png" srcset="/img/loading.gif" lazyload alt="alt text" /> (1)执行完make help之后，会对这些命令有简单的解释。其中，对于上述运行的命令解释如下： defconfig - New config with default from ARCH supplied defconfig（也就是说，根据现有的文件生成一个默认的配置文件）</p>
+<p>distclean - mrproper + remove editor backup and patch files（清除所有与配置相关的文件）</p>
+<p>另外，make -j$(nproc) 将 -j 和 $(nproc) 结合起来，意思是 使用系统中所有可用的 CPU 核心数来并行编译。nproc会返回系统可用的 CPU 核心数。</p>
+<p>（2）命令 make V=1 可以让编译的过程中显示出来详细的内容；make -d 可以诊断makefile等详细问题</p>
+<p>(3)<img src="image-151.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 内核映像是指，如果内核是电脑各个部分的”主控“的话，那么内核映像就是记录这一系列信息的“图纸”。在启动的过程中，会被加载和运行。</p>
+<h2 id="交叉编译-risc-v-架构内核">4.3 交叉编译 RISC-V 架构内核</h2>
+<p>交叉编译不是让同一个内核映像在不同架构上运行，而是在一种架构上编译生成能在另一种架构上运行的内核映像。如下所示：<img src="image-152.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
 
                 
               </div>
