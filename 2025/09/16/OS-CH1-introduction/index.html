@@ -19,19 +19,28 @@
   <meta name="author" content="zrw">
   <meta name="keywords" content="">
   
-    <meta name="description" content="OS CH1:introduction 1.0 LINUX概述   如图为Linux发展的“五大支柱”、 ### 1.0.1 LINUX的系统结构 Linux系统中没有像windows的不同的C D E盘之类的结构，而是统一挂在同一个序列下面 需要掌握Linux相关的命令！ 1.1 操作系统是做什么的？ 操作系统是一个介于计算机hardware和user之间的“中介”。">
+    <meta name="description" content="OS CH1:introduction 1.0 LINUX概述   如图为Linux发展的“五大支柱”、 ### 1.0.1 LINUX的系统结构 Linux系统中没有像windows的不同的C D E盘之类的结构，而是统一挂在同一个序列下面 需要掌握Linux相关的命令！  sudo :这个之后的命令的意思是，使用root的权限来运行后面的内容，root是具有“超级权限”的账户，可以修改">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OS CH1:introduction">
 <meta property="og:url" content="http://example.com/2025/09/16/OS-CH1-introduction/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="OS CH1:introduction 1.0 LINUX概述   如图为Linux发展的“五大支柱”、 ### 1.0.1 LINUX的系统结构 Linux系统中没有像windows的不同的C D E盘之类的结构，而是统一挂在同一个序列下面 需要掌握Linux相关的命令！ 1.1 操作系统是做什么的？ 操作系统是一个介于计算机hardware和user之间的“中介”。">
+<meta property="og:description" content="OS CH1:introduction 1.0 LINUX概述   如图为Linux发展的“五大支柱”、 ### 1.0.1 LINUX的系统结构 Linux系统中没有像windows的不同的C D E盘之类的结构，而是统一挂在同一个序列下面 需要掌握Linux相关的命令！  sudo :这个之后的命令的意思是，使用root的权限来运行后面的内容，root是具有“超级权限”的账户，可以修改">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/osch1pictures/image-75.png">
 <meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-105.png">
 <meta property="og:image" content="http://example.com/osch1pictures/image-73.png">
 <meta property="og:image" content="http://example.com/osch1pictures/image-74.png">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/33d17f9189518f284b23eab2a5894b24.jpg">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-161.png">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-154.png">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-155.png">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-156.png">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-157.png">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-158.png">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-159.png">
+<meta property="og:image" content="http://example.com/2025/09/16/OS-CH1-introduction/image-160.png">
 <meta property="article:published_time" content="2025-09-16T06:51:03.000Z">
-<meta property="article:modified_time" content="2025-09-19T01:21:14.308Z">
+<meta property="article:modified_time" content="2025-09-24T01:46:58.136Z">
 <meta property="article:author" content="zrw">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/osch1pictures/image-75.png">
@@ -227,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          291 字
+          1.4k 字
         
       </span>
     
@@ -238,7 +247,7 @@
         
         
         
-          3 分钟
+          12 分钟
         
       </span>
     
@@ -283,11 +292,45 @@
                 <h1 id="os-ch1introduction">OS CH1:introduction</h1>
 <h2 id="linux概述">1.0 LINUX概述</h2>
 <p><img src="/osch1pictures/image-75.png" srcset="/img/loading.gif" lazyload alt="alt text" /> <img src="image-105.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 如图为Linux发展的“五大支柱”、 ### 1.0.1 LINUX的系统结构 Linux系统中没有像windows的不同的C D E盘之类的结构，而是统一挂在同一个序列下面 需要掌握Linux相关的命令！</p>
+<ol type="1">
+<li><strong>sudo</strong> :这个之后的命令的意思是，使用root的权限来运行后面的内容，root是具有“超级权限”的账户，可以修改、删除任何的文件</li>
+</ol>
 <h2 id="操作系统是做什么的">1.1 操作系统是做什么的？</h2>
 <p>操作系统是一个<strong>介于计算机hardware和user之间的“中介”</strong>。 <div class="note note-primary">
             <p>这里的user并非一定是“人”，也可以是“软件”，连接到主机的笔记本，etc.</p>
           </div> 操作系统有这些作用：<img src="/osch1pictures/image-73.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 从架构的角度来看：<img src="/osch1pictures/image-74.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 从计算机系统组成的角度看（软硬件）：操作系统是<strong>系统软件</strong> 从用户的角度看：操作系统是硬件和用户的接口，其提供了<strong>命令级接口</strong>（e.g. 鼠标，触摸屏，键盘，etc.）与<strong>程序级接口</strong>（操作系统给一系列程序提供调用的接口，也就是程序通过操作系统才可以接触、调用底层硬件的东西） 从系统的角度来看：操作系统是计算机系统资源的管理者（管理各种乱七八糟的硬件）</p>
 <h2 id="计算机系统的组成">1.2 计算机系统的组成</h2>
+<p>比较常见的有<strong>总线结构</strong>和现在比较少见的<strong>主机型结构</strong>;总线结构的所有设备都连接在一根I/O bus和memory bus中，即都挂接在主线上；而主机型结构的核心是<strong>存储器</strong>，CPU以及各种通道都与存储器相连。</p>
+<h3 id="计算机系统的操作">1.2.1 计算机系统的操作</h3>
+<h4 id="device-controller">1.2.1.1 device controller</h4>
+<p>首先介绍<strong>device controller</strong>（设备控制器）：可以理解为，每一个I/O设备都需要配备一个设备控制器，它可以在特定的设备和CPU之间充当一个”翻译“的角色。比如说，网卡 显卡 声卡 就是用来处理网络 视觉 音频的特定device controller。</p>
+<p>与之相关的工作流程大致如下描述：每一个控制特定device controller的操作系统叫做<strong>device driver</strong>（设备驱动）；每一个device driver会有一个local buffer;CPU控制main memory向local buffer传输数据 <img src="33d17f9189518f284b23eab2a5894b24.jpg" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
+<p>当设备完成执行的任务之后，device controller会向CPU发送一个<strong>interrupt</strong>信号，表示设备已经完成执行任务。因此可见：CPU可以与硬件设备并行运行，因为只要把命令下达下去、指令传递过去，之后只要等待传来interrupt即可。</p>
+<h4 id="计算机启动">1.2.1.2 计算机启动</h4>
+<p>计算机启动一般分为以下几个步骤：<img src="image-161.png" srcset="/img/loading.gif" lazyload alt="alt text" /> <strong>bootstrap program（引导程序）</strong>相当于是对于特定系统部分的启动程序，其帮助更好地启动。</p>
+<p>ROM中的引导程序也就是我们常知的bios、UEFI等。然后分阶段启动之后，启动操作系统的内核，之后基本完成计算机的启动。</p>
+<h4 id="common-functions-of-interrupts">1.2.1.3 common functions of interrupts</h4>
+<p>介绍interrupt是如何与处理机（cpu）进行交互的：当一个设备处理任务完成之后，interrupt传递到cpu手上之后，cpu会记录手上工作的地址，并且立即去处理这个interrupt；每个设备对应着不同的interrupt内容，而这些内容被统一存储在一个 <strong>中断向量（interrupt vector）</strong> 中。</p>
+<div class="note note-example">
+            <p>interrupt之间需要排队一个一个来，不然会发生lost interrupt而错过信息</p>
+          </div>
+<p>与interrupt相对应的有一个<strong>trap</strong>的定义，这个trap是<strong>由软件引起的，主动的</strong>一个中断，其一般来源于错误（比如说，运算中除0了或者访问了非法地址）或者是用户的请求。不难理解，interrupt是异步的，而trap是同步的（因为软件引起的中断一定是与cpu当前工作内容有关的，而对于interrupt，引发它操作的命令之前就下达过了）在cpu正在进行的进程中，一条指令完成后可能会引起trap。 <img src="image-154.png" srcset="/img/loading.gif" lazyload alt="alt text" /> <div class="note note-info">
+            <p>这部分内容和操作系统最大的关系为：<strong>An operating system is interruptdriven.</strong> 也就是说，大部分时间os是闲着的，但是一旦发生中断，就需要我的操作系统出面来处理问题。</p>
+          </div></p>
+<p>trap与fault的区别：trap是主动的、预期的中断，比如说系统调用open write等，写了一条命令停下来了；而fault就是出错了（比如说，不幸执行了除以0等等的命令）</p>
+<h4 id="中断处理">1.2.1.4 中断处理</h4>
+<p><img src="image-155.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 这张图的例子表明，当需要进行I/O的时候，由于CPU和I/O可以并行执行，这里是先并行执行，然后I/O传输完数据以后CPU会执行I/O的中断处理（为什么这样？）</p>
+<h3 id="存储结构">1.2.2 存储结构</h3>
+<p><img src="image-156.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 这个部分的内容和之前学的内容很相似 recall：</p>
+<h3 id="io结构">1.2.3 I/O结构</h3>
+<ol type="1">
+<li>同步I/O和异步I/O：一个要等，一个不要等</li>
+</ol>
+<h2 id="计算机系统架构">1.3 计算机系统架构</h2>
+<p>“处理器”相当于芯片，一个处理器可以有多个CPU，一般采用下图的第二种方式<img src="image-157.png" srcset="/img/loading.gif" lazyload alt="alt text" /> <img src="image-158.png" srcset="/img/loading.gif" lazyload alt="alt text" /> 基本的概念定义：CPU是<strong>执行各种指令的硬件</strong>，而core是CPU上的<strong>最基本计算的单元</strong>，也就是说一个CPU可以是有多个核的。在这个体系划分中，核是最小的单位</p>
+<p>集群系统和分布式系统都是简单提了一下</p>
+<h2 id="操作系统程序的执行">1.4 操作系统（程序）的执行</h2>
+<p>重点掌握：CPU是user mode的话，特权指令不能运行；但是kernel mode下，所有指令都可以运行<img src="image-159.png" srcset="/img/loading.gif" lazyload alt="alt text" /><img src="image-160.png" srcset="/img/loading.gif" lazyload alt="alt text" /></p>
 
                 
               </div>
